@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "./society-proto";
+
+service SocietyService {
+  rpc CreateSociety(SetFriendsIn) returns (SetFriendsOut){};
+}
+
+message SetFriendsIn {
+  string name = 1;
+  string description = 2;
+  bool is_private = 3;
+  int64 direction_id = 4;
+  int64 access_level_id = 5;
+}
+
+message SetFriendsOut {
+  int64 society_id = 1;
+}
