@@ -1,4 +1,5 @@
-module society-proto
+module github.com/s21platform/society-proto
+
 
 go 1.23.1
 
