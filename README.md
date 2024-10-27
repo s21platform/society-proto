@@ -4,8 +4,8 @@
 ## Table of Contents
 
 - [society.proto](#society-proto)
-    - [SetFriendsIn](#-SetFriendsIn)
-    - [SetFriendsOut](#-SetFriendsOut)
+    - [SetSocietyIn](#-SetSocietyIn)
+    - [SetSocietyOut](#-SetSocietyOut)
   
     - [SocietyService](#-SocietyService)
   
@@ -20,9 +20,9 @@
 
 
 
-<a name="-SetFriendsIn"></a>
+<a name="-SetSocietyIn"></a>
 
-### SetFriendsIn
+### SetSocietyIn
 
 
 
@@ -39,9 +39,9 @@
 
 
 
-<a name="-SetFriendsOut"></a>
+<a name="-SetSocietyOut"></a>
 
-### SetFriendsOut
+### SetSocietyOut
 
 
 
@@ -67,7 +67,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateSociety | [.SetFriendsIn](#SetFriendsIn) | [.SetFriendsOut](#SetFriendsOut) |  |
+| CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) |  |
 
  
 

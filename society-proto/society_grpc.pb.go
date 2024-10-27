@@ -26,7 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SocietyServiceClient interface {
-	CreateSociety(ctx context.Context, in *SetFriendsIn, opts ...grpc.CallOption) (*SetFriendsOut, error)
+	CreateSociety(ctx context.Context, in *SetSocietyIn, opts ...grpc.CallOption) (*SetSocietyOut, error)
 }
 
 type societyServiceClient struct {
@@ -37,9 +37,9 @@ func NewSocietyServiceClient(cc grpc.ClientConnInterface) SocietyServiceClient {
 	return &societyServiceClient{cc}
 }
 
-func (c *societyServiceClient) CreateSociety(ctx context.Context, in *SetFriendsIn, opts ...grpc.CallOption) (*SetFriendsOut, error) {
+func (c *societyServiceClient) CreateSociety(ctx context.Context, in *SetSocietyIn, opts ...grpc.CallOption) (*SetSocietyOut, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SetFriendsOut)
+	out := new(SetSocietyOut)
 	err := c.cc.Invoke(ctx, SocietyService_CreateSociety_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func (c *societyServiceClient) CreateSociety(ctx context.Context, in *SetFriends
 // All implementations must embed UnimplementedSocietyServiceServer
 // for forward compatibility.
 type SocietyServiceServer interface {
-	CreateSociety(context.Context, *SetFriendsIn) (*SetFriendsOut, error)
+	CreateSociety(context.Context, *SetSocietyIn) (*SetSocietyOut, error)
 	mustEmbedUnimplementedSocietyServiceServer()
 }
 
@@ -62,7 +62,7 @@ type SocietyServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedSocietyServiceServer struct{}
 
-func (UnimplementedSocietyServiceServer) CreateSociety(context.Context, *SetFriendsIn) (*SetFriendsOut, error) {
+func (UnimplementedSocietyServiceServer) CreateSociety(context.Context, *SetSocietyIn) (*SetSocietyOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSociety not implemented")
 }
 func (UnimplementedSocietyServiceServer) mustEmbedUnimplementedSocietyServiceServer() {}
@@ -87,7 +87,7 @@ func RegisterSocietyServiceServer(s grpc.ServiceRegistrar, srv SocietyServiceSer
 }
 
 func _SocietyService_CreateSociety_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetFriendsIn)
+	in := new(SetSocietyIn)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -99,7 +99,7 @@ func _SocietyService_CreateSociety_Handler(srv interface{}, ctx context.Context,
 		FullMethod: SocietyService_CreateSociety_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SocietyServiceServer).CreateSociety(ctx, req.(*SetFriendsIn))
+		return srv.(SocietyServiceServer).CreateSociety(ctx, req.(*SetSocietyIn))
 	}
 	return interceptor(ctx, in, info, handler)
 }
