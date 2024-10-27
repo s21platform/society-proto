@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type SetFriendsIn struct {
+type SetSocietyIn struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -32,20 +32,20 @@ type SetFriendsIn struct {
 	AccessLevelId int64  `protobuf:"varint,5,opt,name=access_level_id,json=accessLevelId,proto3" json:"access_level_id,omitempty"`
 }
 
-func (x *SetFriendsIn) Reset() {
-	*x = SetFriendsIn{}
+func (x *SetSocietyIn) Reset() {
+	*x = SetSocietyIn{}
 	mi := &file_society_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SetFriendsIn) String() string {
+func (x *SetSocietyIn) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SetFriendsIn) ProtoMessage() {}
+func (*SetSocietyIn) ProtoMessage() {}
 
-func (x *SetFriendsIn) ProtoReflect() protoreflect.Message {
+func (x *SetSocietyIn) ProtoReflect() protoreflect.Message {
 	mi := &file_society_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -57,47 +57,47 @@ func (x *SetFriendsIn) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SetFriendsIn.ProtoReflect.Descriptor instead.
-func (*SetFriendsIn) Descriptor() ([]byte, []int) {
+// Deprecated: Use SetSocietyIn.ProtoReflect.Descriptor instead.
+func (*SetSocietyIn) Descriptor() ([]byte, []int) {
 	return file_society_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *SetFriendsIn) GetName() string {
+func (x *SetSocietyIn) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-func (x *SetFriendsIn) GetDescription() string {
+func (x *SetSocietyIn) GetDescription() string {
 	if x != nil {
 		return x.Description
 	}
 	return ""
 }
 
-func (x *SetFriendsIn) GetIsPrivate() bool {
+func (x *SetSocietyIn) GetIsPrivate() bool {
 	if x != nil {
 		return x.IsPrivate
 	}
 	return false
 }
 
-func (x *SetFriendsIn) GetDirectionId() int64 {
+func (x *SetSocietyIn) GetDirectionId() int64 {
 	if x != nil {
 		return x.DirectionId
 	}
 	return 0
 }
 
-func (x *SetFriendsIn) GetAccessLevelId() int64 {
+func (x *SetSocietyIn) GetAccessLevelId() int64 {
 	if x != nil {
 		return x.AccessLevelId
 	}
 	return 0
 }
 
-type SetFriendsOut struct {
+type SetSocietyOut struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -105,20 +105,20 @@ type SetFriendsOut struct {
 	SocietyId int64 `protobuf:"varint,1,opt,name=society_id,json=societyId,proto3" json:"society_id,omitempty"`
 }
 
-func (x *SetFriendsOut) Reset() {
-	*x = SetFriendsOut{}
+func (x *SetSocietyOut) Reset() {
+	*x = SetSocietyOut{}
 	mi := &file_society_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SetFriendsOut) String() string {
+func (x *SetSocietyOut) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SetFriendsOut) ProtoMessage() {}
+func (*SetSocietyOut) ProtoMessage() {}
 
-func (x *SetFriendsOut) ProtoReflect() protoreflect.Message {
+func (x *SetSocietyOut) ProtoReflect() protoreflect.Message {
 	mi := &file_society_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -130,12 +130,12 @@ func (x *SetFriendsOut) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SetFriendsOut.ProtoReflect.Descriptor instead.
-func (*SetFriendsOut) Descriptor() ([]byte, []int) {
+// Deprecated: Use SetSocietyOut.ProtoReflect.Descriptor instead.
+func (*SetSocietyOut) Descriptor() ([]byte, []int) {
 	return file_society_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SetFriendsOut) GetSocietyId() int64 {
+func (x *SetSocietyOut) GetSocietyId() int64 {
 	if x != nil {
 		return x.SocietyId
 	}
@@ -146,7 +146,7 @@ var File_society_proto protoreflect.FileDescriptor
 
 var file_society_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x73, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22,
-	0xae, 0x01, 0x0a, 0x0c, 0x53, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x73, 0x49, 0x6e,
+	0xae, 0x01, 0x0a, 0x0c, 0x53, 0x65, 0x74, 0x53, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x49, 0x6e,
 	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
 	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74,
 	0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72,
@@ -157,13 +157,13 @@ var file_society_proto_rawDesc = []byte{
 	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x49, 0x64, 0x12, 0x26, 0x0a, 0x0f, 0x61, 0x63, 0x63, 0x65,
 	0x73, 0x73, 0x5f, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28,
 	0x03, 0x52, 0x0d, 0x61, 0x63, 0x63, 0x65, 0x73, 0x73, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x49, 0x64,
-	0x22, 0x2e, 0x0a, 0x0d, 0x53, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x73, 0x4f, 0x75,
+	0x22, 0x2e, 0x0a, 0x0d, 0x53, 0x65, 0x74, 0x53, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x4f, 0x75,
 	0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x5f, 0x69, 0x64, 0x18,
 	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x73, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x49, 0x64,
 	0x32, 0x42, 0x0a, 0x0e, 0x53, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x53, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x12, 0x30, 0x0a, 0x0d, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x53, 0x6f, 0x63, 0x69,
-	0x65, 0x74, 0x79, 0x12, 0x0d, 0x2e, 0x53, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x73,
-	0x49, 0x6e, 0x1a, 0x0e, 0x2e, 0x53, 0x65, 0x74, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x73, 0x4f,
+	0x65, 0x74, 0x79, 0x12, 0x0d, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79,
+	0x49, 0x6e, 0x1a, 0x0e, 0x2e, 0x53, 0x65, 0x74, 0x53, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x4f,
 	0x75, 0x74, 0x22, 0x00, 0x42, 0x11, 0x5a, 0x0f, 0x2e, 0x2f, 0x73, 0x6f, 0x63, 0x69, 0x65, 0x74,
 	0x79, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
@@ -182,12 +182,12 @@ func file_society_proto_rawDescGZIP() []byte {
 
 var file_society_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_society_proto_goTypes = []any{
-	(*SetFriendsIn)(nil),  // 0: SetFriendsIn
-	(*SetFriendsOut)(nil), // 1: SetFriendsOut
+	(*SetSocietyIn)(nil),  // 0: SetSocietyIn
+	(*SetSocietyOut)(nil), // 1: SetSocietyOut
 }
 var file_society_proto_depIdxs = []int32{
-	0, // 0: SocietyService.CreateSociety:input_type -> SetFriendsIn
-	1, // 1: SocietyService.CreateSociety:output_type -> SetFriendsOut
+	0, // 0: SocietyService.CreateSociety:input_type -> SetSocietyIn
+	1, // 1: SocietyService.CreateSociety:output_type -> SetSocietyOut
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
