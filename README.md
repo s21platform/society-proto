@@ -4,6 +4,9 @@
 ## Table of Contents
 
 - [society.proto](#society-proto)
+    - [AccessLevel](#-AccessLevel)
+    - [Empty](#-Empty)
+    - [GetAccessLevelOut](#-GetAccessLevelOut)
     - [SetSocietyIn](#-SetSocietyIn)
     - [SetSocietyOut](#-SetSocietyOut)
   
@@ -17,6 +20,47 @@
 <p align="right"><a href="#top">Top</a></p>
 
 ## society.proto
+
+
+
+<a name="-AccessLevel"></a>
+
+### AccessLevel
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
+| access_level | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-Empty"></a>
+
+### Empty
+
+
+
+
+
+
+
+<a name="-GetAccessLevelOut"></a>
+
+### GetAccessLevelOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| levels | [AccessLevel](#AccessLevel) | repeated |  |
+
+
+
 
 
 
@@ -68,6 +112,7 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) |  |
+| GetAccessLevel | [.Empty](#Empty) | [.GetAccessLevelOut](#GetAccessLevelOut) |  |
 
  
 

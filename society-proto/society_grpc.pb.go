@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SocietyService_CreateSociety_FullMethodName = "/SocietyService/CreateSociety"
+	SocietyService_CreateSociety_FullMethodName  = "/SocietyService/CreateSociety"
+	SocietyService_GetAccessLevel_FullMethodName = "/SocietyService/GetAccessLevel"
 )
 
 // SocietyServiceClient is the client API for SocietyService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SocietyServiceClient interface {
 	CreateSociety(ctx context.Context, in *SetSocietyIn, opts ...grpc.CallOption) (*SetSocietyOut, error)
+	GetAccessLevel(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAccessLevelOut, error)
 }
 
 type societyServiceClient struct {
@@ -47,11 +49,22 @@ func (c *societyServiceClient) CreateSociety(ctx context.Context, in *SetSociety
 	return out, nil
 }
 
+func (c *societyServiceClient) GetAccessLevel(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAccessLevelOut, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAccessLevelOut)
+	err := c.cc.Invoke(ctx, SocietyService_GetAccessLevel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocietyServiceServer is the server API for SocietyService service.
 // All implementations must embed UnimplementedSocietyServiceServer
 // for forward compatibility.
 type SocietyServiceServer interface {
 	CreateSociety(context.Context, *SetSocietyIn) (*SetSocietyOut, error)
+	GetAccessLevel(context.Context, *Empty) (*GetAccessLevelOut, error)
 	mustEmbedUnimplementedSocietyServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedSocietyServiceServer struct{}
 
 func (UnimplementedSocietyServiceServer) CreateSociety(context.Context, *SetSocietyIn) (*SetSocietyOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateSociety not implemented")
+}
+func (UnimplementedSocietyServiceServer) GetAccessLevel(context.Context, *Empty) (*GetAccessLevelOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAccessLevel not implemented")
 }
 func (UnimplementedSocietyServiceServer) mustEmbedUnimplementedSocietyServiceServer() {}
 func (UnimplementedSocietyServiceServer) testEmbeddedByValue()                        {}
@@ -104,6 +120,24 @@ func _SocietyService_CreateSociety_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocietyService_GetAccessLevel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocietyServiceServer).GetAccessLevel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocietyService_GetAccessLevel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocietyServiceServer).GetAccessLevel(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocietyService_ServiceDesc is the grpc.ServiceDesc for SocietyService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var SocietyService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateSociety",
 			Handler:    _SocietyService_CreateSociety_Handler,
+		},
+		{
+			MethodName: "GetAccessLevel",
+			Handler:    _SocietyService_GetAccessLevel_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
