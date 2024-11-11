@@ -6,6 +6,7 @@
 - [society.proto](#society-proto)
     - [AccessLevel](#-AccessLevel)
     - [Empty](#-Empty)
+    - [EmptySociety](#-EmptySociety)
     - [GetAccessLevelOut](#-GetAccessLevelOut)
     - [GetPermissionsOut](#-GetPermissionsOut)
     - [Permission](#-Permission)
@@ -44,6 +45,16 @@
 <a name="-Empty"></a>
 
 ### Empty
+
+
+
+
+
+
+
+<a name="-EmptySociety"></a>
+
+### EmptySociety
 
 
 
@@ -147,7 +158,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) |  |
 | GetAccessLevel | [.Empty](#Empty) | [.GetAccessLevelOut](#GetAccessLevelOut) |  |
-| GetPermissions | [.Empty](#Empty) | [.GetPermissionsOut](#GetPermissionsOut) |  |
+| GetPermissions | [.EmptySociety](#EmptySociety) | [.GetPermissionsOut](#GetPermissionsOut) |  |
 
  
 

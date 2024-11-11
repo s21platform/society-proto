@@ -30,7 +30,7 @@ const (
 type SocietyServiceClient interface {
 	CreateSociety(ctx context.Context, in *SetSocietyIn, opts ...grpc.CallOption) (*SetSocietyOut, error)
 	GetAccessLevel(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAccessLevelOut, error)
-	GetPermissions(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetPermissionsOut, error)
+	GetPermissions(ctx context.Context, in *EmptySociety, opts ...grpc.CallOption) (*GetPermissionsOut, error)
 }
 
 type societyServiceClient struct {
@@ -61,7 +61,7 @@ func (c *societyServiceClient) GetAccessLevel(ctx context.Context, in *Empty, op
 	return out, nil
 }
 
-func (c *societyServiceClient) GetPermissions(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetPermissionsOut, error) {
+func (c *societyServiceClient) GetPermissions(ctx context.Context, in *EmptySociety, opts ...grpc.CallOption) (*GetPermissionsOut, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetPermissionsOut)
 	err := c.cc.Invoke(ctx, SocietyService_GetPermissions_FullMethodName, in, out, cOpts...)
@@ -77,7 +77,7 @@ func (c *societyServiceClient) GetPermissions(ctx context.Context, in *Empty, op
 type SocietyServiceServer interface {
 	CreateSociety(context.Context, *SetSocietyIn) (*SetSocietyOut, error)
 	GetAccessLevel(context.Context, *Empty) (*GetAccessLevelOut, error)
-	GetPermissions(context.Context, *Empty) (*GetPermissionsOut, error)
+	GetPermissions(context.Context, *EmptySociety) (*GetPermissionsOut, error)
 	mustEmbedUnimplementedSocietyServiceServer()
 }
 
@@ -94,7 +94,7 @@ func (UnimplementedSocietyServiceServer) CreateSociety(context.Context, *SetSoci
 func (UnimplementedSocietyServiceServer) GetAccessLevel(context.Context, *Empty) (*GetAccessLevelOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccessLevel not implemented")
 }
-func (UnimplementedSocietyServiceServer) GetPermissions(context.Context, *Empty) (*GetPermissionsOut, error) {
+func (UnimplementedSocietyServiceServer) GetPermissions(context.Context, *EmptySociety) (*GetPermissionsOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPermissions not implemented")
 }
 func (UnimplementedSocietyServiceServer) mustEmbedUnimplementedSocietyServiceServer() {}
@@ -155,7 +155,7 @@ func _SocietyService_GetAccessLevel_Handler(srv interface{}, ctx context.Context
 }
 
 func _SocietyService_GetPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(EmptySociety)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -167,7 +167,7 @@ func _SocietyService_GetPermissions_Handler(srv interface{}, ctx context.Context
 		FullMethod: SocietyService_GetPermissions_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SocietyServiceServer).GetPermissions(ctx, req.(*Empty))
+		return srv.(SocietyServiceServer).GetPermissions(ctx, req.(*EmptySociety))
 	}
 	return interceptor(ctx, in, info, handler)
 }

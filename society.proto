@@ -5,7 +5,7 @@ option go_package = "./society-proto";
 service SocietyService {
   rpc CreateSociety(SetSocietyIn) returns (SetSocietyOut){};
   rpc GetAccessLevel(Empty) returns (GetAccessLevelOut){};
-  rpc GetPermissions(Empty) returns (GetPermissionsOut){};
+  rpc GetPermissions(EmptySociety) returns (GetPermissionsOut){};
 }
 
 message SetSocietyIn {
@@ -30,6 +30,8 @@ message AccessLevel {
 }
 
 message Empty {}
+
+message EmptySociety {}
 
 message GetPermissionsOut {
   repeated Permission permissions = 1;
