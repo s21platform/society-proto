@@ -6,7 +6,10 @@
 - [society.proto](#society-proto)
     - [AccessLevel](#-AccessLevel)
     - [Empty](#-Empty)
+    - [EmptySociety](#-EmptySociety)
     - [GetAccessLevelOut](#-GetAccessLevelOut)
+    - [GetPermissionsOut](#-GetPermissionsOut)
+    - [Permission](#-Permission)
     - [SetSocietyIn](#-SetSocietyIn)
     - [SetSocietyOut](#-SetSocietyOut)
   
@@ -49,6 +52,16 @@
 
 
 
+<a name="-EmptySociety"></a>
+
+### EmptySociety
+
+
+
+
+
+
+
 <a name="-GetAccessLevelOut"></a>
 
 ### GetAccessLevelOut
@@ -58,6 +71,38 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | levels | [AccessLevel](#AccessLevel) | repeated |  |
+
+
+
+
+
+
+<a name="-GetPermissionsOut"></a>
+
+### GetPermissionsOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| permissions | [Permission](#Permission) | repeated |  |
+
+
+
+
+
+
+<a name="-Permission"></a>
+
+### Permission
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  |  |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
 
 
 
@@ -113,6 +158,7 @@
 | ----------- | ------------ | ------------- | ------------|
 | CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) |  |
 | GetAccessLevel | [.Empty](#Empty) | [.GetAccessLevelOut](#GetAccessLevelOut) |  |
+| GetPermissions | [.EmptySociety](#EmptySociety) | [.GetPermissionsOut](#GetPermissionsOut) |  |
 
  
 
