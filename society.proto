@@ -3,42 +3,63 @@ syntax = "proto3";
 option go_package = "./society-proto";
 
 service SocietyService {
+  //Метод создания сообщества
   rpc CreateSociety(SetSocietyIn) returns (SetSocietyOut){};
-  rpc GetAccessLevel(Empty) returns (GetAccessLevelOut){};
+  //Метод получения уровней доступа
+  rpc GetAccessLevel(EmptySociety) returns (GetAccessLevelOut){};
+  // Метод получения разрешения
   rpc GetPermissions(EmptySociety) returns (GetPermissionsOut){};
 }
 
+//Данные для создания сообщества
 message SetSocietyIn {
+  //Имя
   string name = 1;
+  //Описание
   string description = 2;
+  //Приватность
   bool is_private = 3;
+  //Направление
   int64 direction_id = 4;
+  //Уровень доступа
   int64 access_level_id = 5;
 }
 
+//Объект ответа создания сообщества
 message SetSocietyOut {
+  //id созданного сообщества
   int64 society_id = 1;
 }
 
+//Объект возвращения уровней доступа
 message GetAccessLevelOut {
+  // Список уровней доступа
   repeated AccessLevel levels = 1;
 }
 
+//Описание уровней доступа
 message AccessLevel {
+  //Идентификатор уровня доступа
   int64 id = 1;
+  // Название или описание уровня доступа
   string access_level = 2;
 }
 
-message Empty {}
-
+//Пустой объект
 message EmptySociety {}
 
+//Объект возвращения списка разрешений
 message GetPermissionsOut {
+  // Список разрешений.
   repeated Permission permissions = 1;
 }
 
+//Описание разрешения
 message Permission {
+  //Уникальный идентификатор разрешения
   int64 id = 1;
+  //Название разрешения
   string name = 2;
+  //Описание разрешения
   string description = 3;
 }
