@@ -9,9 +9,19 @@
     - [EmptySociety](#-EmptySociety)
     - [GetAccessLevelOut](#-GetAccessLevelOut)
     - [GetPermissionsOut](#-GetPermissionsOut)
+    - [GetSocietiesForUserIn](#-GetSocietiesForUserIn)
+    - [GetSocietiesForUserOut](#-GetSocietiesForUserOut)
+    - [GetUsersForSocietyIn](#-GetUsersForSocietyIn)
+    - [GetUsersForSocietyOut](#-GetUsersForSocietyOut)
     - [Permission](#-Permission)
     - [SetSocietyIn](#-SetSocietyIn)
     - [SetSocietyOut](#-SetSocietyOut)
+    - [Society](#-Society)
+    - [SubscribeToSocietyIn](#-SubscribeToSocietyIn)
+    - [SubscribeToSocietyOut](#-SubscribeToSocietyOut)
+    - [UnsubscribeFromSocietyIn](#-UnsubscribeFromSocietyIn)
+    - [UnsubscribeFromSocietyOut](#-UnsubscribeFromSocietyOut)
+    - [User](#-User)
   
     - [SocietyService](#-SocietyService)
   
@@ -92,6 +102,66 @@
 
 
 
+<a name="-GetSocietiesForUserIn"></a>
+
+### GetSocietiesForUserIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_uuid | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="-GetSocietiesForUserOut"></a>
+
+### GetSocietiesForUserOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society | [Society](#Society) | repeated |  |
+
+
+
+
+
+
+<a name="-GetUsersForSocietyIn"></a>
+
+### GetUsersForSocietyIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="-GetUsersForSocietyOut"></a>
+
+### GetUsersForSocietyOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| users | [User](#User) | repeated |  |
+
+
+
+
+
+
 <a name="-Permission"></a>
 
 ### Permission
@@ -142,6 +212,99 @@
 
 
 
+
+<a name="-Society"></a>
+
+### Society
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| avatar_link | [string](#string) |  |  |
+| society_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="-SubscribeToSocietyIn"></a>
+
+### SubscribeToSocietyIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="-SubscribeToSocietyOut"></a>
+
+### SubscribeToSocietyOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| success | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="-UnsubscribeFromSocietyIn"></a>
+
+### UnsubscribeFromSocietyIn
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society_id | [int64](#int64) |  |  |
+
+
+
+
+
+
+<a name="-UnsubscribeFromSocietyOut"></a>
+
+### UnsubscribeFromSocietyOut
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| success | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="-User"></a>
+
+### User
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| avatar_link | [string](#string) |  |  |
+
+
+
+
+
  
 
  
@@ -159,6 +322,10 @@
 | CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) |  |
 | GetAccessLevel | [.Empty](#Empty) | [.GetAccessLevelOut](#GetAccessLevelOut) |  |
 | GetPermissions | [.EmptySociety](#EmptySociety) | [.GetPermissionsOut](#GetPermissionsOut) |  |
+| SubscribeToSociety | [.SubscribeToSocietyIn](#SubscribeToSocietyIn) | [.SubscribeToSocietyOut](#SubscribeToSocietyOut) |  |
+| UnsubscribeFromSociety | [.UnsubscribeFromSocietyIn](#UnsubscribeFromSocietyIn) | [.UnsubscribeFromSocietyOut](#UnsubscribeFromSocietyOut) |  |
+| GetUsersForSociety | [.GetUsersForSocietyIn](#GetUsersForSocietyIn) | [.GetUsersForSocietyOut](#GetUsersForSocietyOut) |  |
+| GetSocietiesForUser | [.GetSocietiesForUserIn](#GetSocietiesForUserIn) | [.GetSocietiesForUserOut](#GetSocietiesForUserOut) |  |
 
  
 

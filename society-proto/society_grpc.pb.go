@@ -19,9 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	SocietyService_CreateSociety_FullMethodName  = "/SocietyService/CreateSociety"
-	SocietyService_GetAccessLevel_FullMethodName = "/SocietyService/GetAccessLevel"
-	SocietyService_GetPermissions_FullMethodName = "/SocietyService/GetPermissions"
+	SocietyService_CreateSociety_FullMethodName          = "/SocietyService/CreateSociety"
+	SocietyService_GetAccessLevel_FullMethodName         = "/SocietyService/GetAccessLevel"
+	SocietyService_GetPermissions_FullMethodName         = "/SocietyService/GetPermissions"
+	SocietyService_SubscribeToSociety_FullMethodName     = "/SocietyService/SubscribeToSociety"
+	SocietyService_UnsubscribeFromSociety_FullMethodName = "/SocietyService/UnsubscribeFromSociety"
+	SocietyService_GetUsersForSociety_FullMethodName     = "/SocietyService/GetUsersForSociety"
+	SocietyService_GetSocietiesForUser_FullMethodName    = "/SocietyService/GetSocietiesForUser"
 )
 
 // SocietyServiceClient is the client API for SocietyService service.
@@ -31,6 +35,10 @@ type SocietyServiceClient interface {
 	CreateSociety(ctx context.Context, in *SetSocietyIn, opts ...grpc.CallOption) (*SetSocietyOut, error)
 	GetAccessLevel(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GetAccessLevelOut, error)
 	GetPermissions(ctx context.Context, in *EmptySociety, opts ...grpc.CallOption) (*GetPermissionsOut, error)
+	SubscribeToSociety(ctx context.Context, in *SubscribeToSocietyIn, opts ...grpc.CallOption) (*SubscribeToSocietyOut, error)
+	UnsubscribeFromSociety(ctx context.Context, in *UnsubscribeFromSocietyIn, opts ...grpc.CallOption) (*UnsubscribeFromSocietyOut, error)
+	GetUsersForSociety(ctx context.Context, in *GetUsersForSocietyIn, opts ...grpc.CallOption) (*GetUsersForSocietyOut, error)
+	GetSocietiesForUser(ctx context.Context, in *GetSocietiesForUserIn, opts ...grpc.CallOption) (*GetSocietiesForUserOut, error)
 }
 
 type societyServiceClient struct {
@@ -71,6 +79,46 @@ func (c *societyServiceClient) GetPermissions(ctx context.Context, in *EmptySoci
 	return out, nil
 }
 
+func (c *societyServiceClient) SubscribeToSociety(ctx context.Context, in *SubscribeToSocietyIn, opts ...grpc.CallOption) (*SubscribeToSocietyOut, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SubscribeToSocietyOut)
+	err := c.cc.Invoke(ctx, SocietyService_SubscribeToSociety_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *societyServiceClient) UnsubscribeFromSociety(ctx context.Context, in *UnsubscribeFromSocietyIn, opts ...grpc.CallOption) (*UnsubscribeFromSocietyOut, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UnsubscribeFromSocietyOut)
+	err := c.cc.Invoke(ctx, SocietyService_UnsubscribeFromSociety_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *societyServiceClient) GetUsersForSociety(ctx context.Context, in *GetUsersForSocietyIn, opts ...grpc.CallOption) (*GetUsersForSocietyOut, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUsersForSocietyOut)
+	err := c.cc.Invoke(ctx, SocietyService_GetUsersForSociety_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *societyServiceClient) GetSocietiesForUser(ctx context.Context, in *GetSocietiesForUserIn, opts ...grpc.CallOption) (*GetSocietiesForUserOut, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSocietiesForUserOut)
+	err := c.cc.Invoke(ctx, SocietyService_GetSocietiesForUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocietyServiceServer is the server API for SocietyService service.
 // All implementations must embed UnimplementedSocietyServiceServer
 // for forward compatibility.
@@ -78,6 +126,10 @@ type SocietyServiceServer interface {
 	CreateSociety(context.Context, *SetSocietyIn) (*SetSocietyOut, error)
 	GetAccessLevel(context.Context, *Empty) (*GetAccessLevelOut, error)
 	GetPermissions(context.Context, *EmptySociety) (*GetPermissionsOut, error)
+	SubscribeToSociety(context.Context, *SubscribeToSocietyIn) (*SubscribeToSocietyOut, error)
+	UnsubscribeFromSociety(context.Context, *UnsubscribeFromSocietyIn) (*UnsubscribeFromSocietyOut, error)
+	GetUsersForSociety(context.Context, *GetUsersForSocietyIn) (*GetUsersForSocietyOut, error)
+	GetSocietiesForUser(context.Context, *GetSocietiesForUserIn) (*GetSocietiesForUserOut, error)
 	mustEmbedUnimplementedSocietyServiceServer()
 }
 
@@ -96,6 +148,18 @@ func (UnimplementedSocietyServiceServer) GetAccessLevel(context.Context, *Empty)
 }
 func (UnimplementedSocietyServiceServer) GetPermissions(context.Context, *EmptySociety) (*GetPermissionsOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPermissions not implemented")
+}
+func (UnimplementedSocietyServiceServer) SubscribeToSociety(context.Context, *SubscribeToSocietyIn) (*SubscribeToSocietyOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubscribeToSociety not implemented")
+}
+func (UnimplementedSocietyServiceServer) UnsubscribeFromSociety(context.Context, *UnsubscribeFromSocietyIn) (*UnsubscribeFromSocietyOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnsubscribeFromSociety not implemented")
+}
+func (UnimplementedSocietyServiceServer) GetUsersForSociety(context.Context, *GetUsersForSocietyIn) (*GetUsersForSocietyOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUsersForSociety not implemented")
+}
+func (UnimplementedSocietyServiceServer) GetSocietiesForUser(context.Context, *GetSocietiesForUserIn) (*GetSocietiesForUserOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSocietiesForUser not implemented")
 }
 func (UnimplementedSocietyServiceServer) mustEmbedUnimplementedSocietyServiceServer() {}
 func (UnimplementedSocietyServiceServer) testEmbeddedByValue()                        {}
@@ -172,6 +236,78 @@ func _SocietyService_GetPermissions_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocietyService_SubscribeToSociety_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubscribeToSocietyIn)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocietyServiceServer).SubscribeToSociety(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocietyService_SubscribeToSociety_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocietyServiceServer).SubscribeToSociety(ctx, req.(*SubscribeToSocietyIn))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocietyService_UnsubscribeFromSociety_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnsubscribeFromSocietyIn)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocietyServiceServer).UnsubscribeFromSociety(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocietyService_UnsubscribeFromSociety_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocietyServiceServer).UnsubscribeFromSociety(ctx, req.(*UnsubscribeFromSocietyIn))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocietyService_GetUsersForSociety_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUsersForSocietyIn)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocietyServiceServer).GetUsersForSociety(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocietyService_GetUsersForSociety_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocietyServiceServer).GetUsersForSociety(ctx, req.(*GetUsersForSocietyIn))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocietyService_GetSocietiesForUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSocietiesForUserIn)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocietyServiceServer).GetSocietiesForUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocietyService_GetSocietiesForUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocietyServiceServer).GetSocietiesForUser(ctx, req.(*GetSocietiesForUserIn))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocietyService_ServiceDesc is the grpc.ServiceDesc for SocietyService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +326,22 @@ var SocietyService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPermissions",
 			Handler:    _SocietyService_GetPermissions_Handler,
+		},
+		{
+			MethodName: "SubscribeToSociety",
+			Handler:    _SocietyService_SubscribeToSociety_Handler,
+		},
+		{
+			MethodName: "UnsubscribeFromSociety",
+			Handler:    _SocietyService_UnsubscribeFromSociety_Handler,
+		},
+		{
+			MethodName: "GetUsersForSociety",
+			Handler:    _SocietyService_GetUsersForSociety_Handler,
+		},
+		{
+			MethodName: "GetSocietiesForUser",
+			Handler:    _SocietyService_GetSocietiesForUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
