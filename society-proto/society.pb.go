@@ -20,16 +20,22 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Данные для создания сообщества
 type SetSocietyIn struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name          string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Description   string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	IsPrivate     bool   `protobuf:"varint,3,opt,name=is_private,json=isPrivate,proto3" json:"is_private,omitempty"`
-	DirectionId   int64  `protobuf:"varint,4,opt,name=direction_id,json=directionId,proto3" json:"direction_id,omitempty"`
-	AccessLevelId int64  `protobuf:"varint,5,opt,name=access_level_id,json=accessLevelId,proto3" json:"access_level_id,omitempty"`
+	// Имя
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Описание
+	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	// Приватность
+	IsPrivate bool `protobuf:"varint,3,opt,name=is_private,json=isPrivate,proto3" json:"is_private,omitempty"`
+	// Направление
+	DirectionId int64 `protobuf:"varint,4,opt,name=direction_id,json=directionId,proto3" json:"direction_id,omitempty"`
+	// Уровень доступа
+	AccessLevelId int64 `protobuf:"varint,5,opt,name=access_level_id,json=accessLevelId,proto3" json:"access_level_id,omitempty"`
 }
 
 func (x *SetSocietyIn) Reset() {
@@ -97,11 +103,13 @@ func (x *SetSocietyIn) GetAccessLevelId() int64 {
 	return 0
 }
 
+// Объект ответа создания сообщества
 type SetSocietyOut struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// id созданного сообщества
 	SocietyId int64 `protobuf:"varint,1,opt,name=society_id,json=societyId,proto3" json:"society_id,omitempty"`
 }
 
@@ -142,11 +150,13 @@ func (x *SetSocietyOut) GetSocietyId() int64 {
 	return 0
 }
 
+// Объект возвращения уровней доступа
 type GetAccessLevelOut struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Список уровней доступа
 	Levels []*AccessLevel `protobuf:"bytes,1,rep,name=levels,proto3" json:"levels,omitempty"`
 }
 
@@ -187,12 +197,15 @@ func (x *GetAccessLevelOut) GetLevels() []*AccessLevel {
 	return nil
 }
 
+// Описание уровней доступа
 type AccessLevel struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Идентификатор уровня доступа
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Название или описание уровня доступа
 	AccessLevel string `protobuf:"bytes,2,opt,name=access_level,json=accessLevel,proto3" json:"access_level,omitempty"`
 }
 
@@ -240,42 +253,7 @@ func (x *AccessLevel) GetAccessLevel() string {
 	return ""
 }
 
-type Empty struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *Empty) Reset() {
-	*x = Empty{}
-	mi := &file_society_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Empty) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Empty) ProtoMessage() {}
-
-func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_society_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Empty.ProtoReflect.Descriptor instead.
-func (*Empty) Descriptor() ([]byte, []int) {
-	return file_society_proto_rawDescGZIP(), []int{4}
-}
-
+// Пустой объект
 type EmptySociety struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -284,7 +262,7 @@ type EmptySociety struct {
 
 func (x *EmptySociety) Reset() {
 	*x = EmptySociety{}
-	mi := &file_society_proto_msgTypes[5]
+	mi := &file_society_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -296,7 +274,7 @@ func (x *EmptySociety) String() string {
 func (*EmptySociety) ProtoMessage() {}
 
 func (x *EmptySociety) ProtoReflect() protoreflect.Message {
-	mi := &file_society_proto_msgTypes[5]
+	mi := &file_society_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -309,20 +287,22 @@ func (x *EmptySociety) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EmptySociety.ProtoReflect.Descriptor instead.
 func (*EmptySociety) Descriptor() ([]byte, []int) {
-	return file_society_proto_rawDescGZIP(), []int{5}
+	return file_society_proto_rawDescGZIP(), []int{4}
 }
 
+// Объект возвращения списка разрешений
 type GetPermissionsOut struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Список разрешений.
 	Permissions []*Permission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
 }
 
 func (x *GetPermissionsOut) Reset() {
 	*x = GetPermissionsOut{}
-	mi := &file_society_proto_msgTypes[6]
+	mi := &file_society_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -334,7 +314,7 @@ func (x *GetPermissionsOut) String() string {
 func (*GetPermissionsOut) ProtoMessage() {}
 
 func (x *GetPermissionsOut) ProtoReflect() protoreflect.Message {
-	mi := &file_society_proto_msgTypes[6]
+	mi := &file_society_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -347,7 +327,7 @@ func (x *GetPermissionsOut) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPermissionsOut.ProtoReflect.Descriptor instead.
 func (*GetPermissionsOut) Descriptor() ([]byte, []int) {
-	return file_society_proto_rawDescGZIP(), []int{6}
+	return file_society_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetPermissionsOut) GetPermissions() []*Permission {
@@ -357,19 +337,23 @@ func (x *GetPermissionsOut) GetPermissions() []*Permission {
 	return nil
 }
 
+// Описание разрешения
 type Permission struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Уникальный идентификатор разрешения
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Название разрешения
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Описание разрешения
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 }
 
 func (x *Permission) Reset() {
 	*x = Permission{}
-	mi := &file_society_proto_msgTypes[7]
+	mi := &file_society_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -381,7 +365,7 @@ func (x *Permission) String() string {
 func (*Permission) ProtoMessage() {}
 
 func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_society_proto_msgTypes[7]
+	mi := &file_society_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -394,7 +378,7 @@ func (x *Permission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Permission.ProtoReflect.Descriptor instead.
 func (*Permission) Descriptor() ([]byte, []int) {
-	return file_society_proto_rawDescGZIP(), []int{7}
+	return file_society_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Permission) GetId() int64 {

@@ -5,7 +5,6 @@
 
 - [society.proto](#society-proto)
     - [AccessLevel](#-AccessLevel)
-    - [Empty](#-Empty)
     - [EmptySociety](#-EmptySociety)
     - [GetAccessLevelOut](#-GetAccessLevelOut)
     - [GetPermissionsOut](#-GetPermissionsOut)
@@ -29,23 +28,13 @@
 <a name="-AccessLevel"></a>
 
 ### AccessLevel
-
+Описание уровней доступа
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| access_level | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="-Empty"></a>
-
-### Empty
-
+| id | [int64](#int64) |  | Идентификатор уровня доступа |
+| access_level | [string](#string) |  | Название или описание уровня доступа |
 
 
 
@@ -55,7 +44,7 @@
 <a name="-EmptySociety"></a>
 
 ### EmptySociety
-
+Пустой объект
 
 
 
@@ -65,12 +54,12 @@
 <a name="-GetAccessLevelOut"></a>
 
 ### GetAccessLevelOut
-
+Объект возвращения уровней доступа
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| levels | [AccessLevel](#AccessLevel) | repeated |  |
+| levels | [AccessLevel](#AccessLevel) | repeated | Список уровней доступа |
 
 
 
@@ -80,12 +69,12 @@
 <a name="-GetPermissionsOut"></a>
 
 ### GetPermissionsOut
-
+Объект возвращения списка разрешений
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| permissions | [Permission](#Permission) | repeated |  |
+| permissions | [Permission](#Permission) | repeated | Список разрешений. |
 
 
 
@@ -95,14 +84,14 @@
 <a name="-Permission"></a>
 
 ### Permission
-
+Описание разрешения
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  |  |
-| name | [string](#string) |  |  |
-| description | [string](#string) |  |  |
+| id | [int64](#int64) |  | Уникальный идентификатор разрешения |
+| name | [string](#string) |  | Название разрешения |
+| description | [string](#string) |  | Описание разрешения |
 
 
 
@@ -112,16 +101,16 @@
 <a name="-SetSocietyIn"></a>
 
 ### SetSocietyIn
-
+Данные для создания сообщества
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| is_private | [bool](#bool) |  |  |
-| direction_id | [int64](#int64) |  |  |
-| access_level_id | [int64](#int64) |  |  |
+| name | [string](#string) |  | Имя |
+| description | [string](#string) |  | Описание |
+| is_private | [bool](#bool) |  | Приватность |
+| direction_id | [int64](#int64) |  | Направление |
+| access_level_id | [int64](#int64) |  | Уровень доступа |
 
 
 
@@ -131,12 +120,12 @@
 <a name="-SetSocietyOut"></a>
 
 ### SetSocietyOut
-
+Объект ответа создания сообщества
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| society_id | [int64](#int64) |  |  |
+| society_id | [int64](#int64) |  | id созданного сообщества |
 
 
 
@@ -156,9 +145,9 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) |  |
-| GetAccessLevel | [.Empty](#Empty) | [.GetAccessLevelOut](#GetAccessLevelOut) |  |
-| GetPermissions | [.EmptySociety](#EmptySociety) | [.GetPermissionsOut](#GetPermissionsOut) |  |
+| CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) | Метод создания сообщества |
+| GetAccessLevel | [.EmptySociety](#EmptySociety) | [.GetAccessLevelOut](#GetAccessLevelOut) | Метод получения уровней доступа |
+| GetPermissions | [.EmptySociety](#EmptySociety) | [.GetPermissionsOut](#GetPermissionsOut) | Метод получения разрешения |
 
  
 
