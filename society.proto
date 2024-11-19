@@ -9,6 +9,10 @@ service SocietyService {
   rpc GetAccessLevel(EmptySociety) returns (GetAccessLevelOut){};
   // Метод получения разрешения
   rpc GetPermissions(EmptySociety) returns (GetPermissionsOut){};
+  rpc SubscribeToSociety(SubscribeToSocietyIn) returns (SubscribeToSocietyOut){};
+  rpc UnsubscribeFromSociety(UnsubscribeFromSocietyIn) returns (UnsubscribeFromSocietyOut){};
+  rpc GetUsersForSociety(GetUsersForSocietyIn) returns (GetUsersForSocietyOut){};
+  rpc GetSocietiesForUser(GetSocietiesForUserIn) returns (GetSocietiesForUserOut){};
 }
 
 //Данные для создания сообщества
@@ -62,4 +66,47 @@ message Permission {
   string name = 2;
   //Описание разрешения
   string description = 3;
+}
+
+message SubscribeToSocietyIn {
+  int64 society_id = 1;
+}
+
+message SubscribeToSocietyOut {
+  bool success = 1;
+}
+
+message UnsubscribeFromSocietyIn {
+  int64 society_id = 1;
+}
+
+message UnsubscribeFromSocietyOut {
+  bool success = 1;
+}
+
+message GetUsersForSocietyIn {
+  int64 society_id = 1;
+}
+
+message GetUsersForSocietyOut {
+  repeated User users = 1;
+}
+
+message User {
+  string name = 1;
+  string avatar_link = 2;
+}
+
+message GetSocietiesForUserIn {
+  string user_uuid = 1;
+}
+
+message GetSocietiesForUserOut {
+  repeated Society society= 1;
+}
+
+message Society {
+  string name = 1;
+  string avatar_link = 2;
+  int64 society_id = 3;
 }
