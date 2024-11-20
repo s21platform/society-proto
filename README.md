@@ -8,9 +8,19 @@
     - [EmptySociety](#-EmptySociety)
     - [GetAccessLevelOut](#-GetAccessLevelOut)
     - [GetPermissionsOut](#-GetPermissionsOut)
+    - [GetSocietiesForUserIn](#-GetSocietiesForUserIn)
+    - [GetSocietiesForUserOut](#-GetSocietiesForUserOut)
+    - [GetUsersForSocietyIn](#-GetUsersForSocietyIn)
+    - [GetUsersForSocietyOut](#-GetUsersForSocietyOut)
     - [Permission](#-Permission)
     - [SetSocietyIn](#-SetSocietyIn)
     - [SetSocietyOut](#-SetSocietyOut)
+    - [Society](#-Society)
+    - [SubscribeToSocietyIn](#-SubscribeToSocietyIn)
+    - [SubscribeToSocietyOut](#-SubscribeToSocietyOut)
+    - [UnsubscribeFromSocietyIn](#-UnsubscribeFromSocietyIn)
+    - [UnsubscribeFromSocietyOut](#-UnsubscribeFromSocietyOut)
+    - [User](#-User)
   
     - [SocietyService](#-SocietyService)
   
@@ -81,6 +91,66 @@
 
 
 
+<a name="-GetSocietiesForUserIn"></a>
+
+### GetSocietiesForUserIn
+Данные о подписках юзера
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| user_uuid | [string](#string) |  | UUID юзера |
+
+
+
+
+
+
+<a name="-GetSocietiesForUserOut"></a>
+
+### GetSocietiesForUserOut
+Возвращение данных о подписках юзера
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society | [Society](#Society) | repeated | Список сообществ, на которые подписан юзер |
+
+
+
+
+
+
+<a name="-GetUsersForSocietyIn"></a>
+
+### GetUsersForSocietyIn
+Данные о подписчиках сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society_id | [int64](#int64) |  | ID сообщества |
+
+
+
+
+
+
+<a name="-GetUsersForSocietyOut"></a>
+
+### GetUsersForSocietyOut
+Возвращение данных о подписчиках сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| users | [User](#User) | repeated | Список юзеров, подписанных на сообщество |
+
+
+
+
+
+
 <a name="-Permission"></a>
 
 ### Permission
@@ -131,6 +201,99 @@
 
 
 
+
+<a name="-Society"></a>
+
+### Society
+Данные параметров о подписках юзера
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Название сообщества |
+| avatar_link | [string](#string) |  | Ссылка на аватарку сообщества |
+| society_id | [int64](#int64) |  | ID сообщества |
+
+
+
+
+
+
+<a name="-SubscribeToSocietyIn"></a>
+
+### SubscribeToSocietyIn
+Данные для подписки на сообщество
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society_id | [int64](#int64) |  | ID сообщества |
+
+
+
+
+
+
+<a name="-SubscribeToSocietyOut"></a>
+
+### SubscribeToSocietyOut
+Возвращение данных о подписке на сообщество
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| success | [bool](#bool) |  | Получилось ли подписаться или нет |
+
+
+
+
+
+
+<a name="-UnsubscribeFromSocietyIn"></a>
+
+### UnsubscribeFromSocietyIn
+Данные для отписки от сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society_id | [int64](#int64) |  | ID сообщества |
+
+
+
+
+
+
+<a name="-UnsubscribeFromSocietyOut"></a>
+
+### UnsubscribeFromSocietyOut
+Возвращение данных об отписке от сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| success | [bool](#bool) |  | Получилось ли подписаться или нет |
+
+
+
+
+
+
+<a name="-User"></a>
+
+### User
+Список параметров юзеров, подписанных на сообщество
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Имя пользователя |
+| avatar_link | [string](#string) |  | Ссылка на аватарку пользователя |
+
+
+
+
+
  
 
  
@@ -148,6 +311,10 @@
 | CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) | Метод создания сообщества |
 | GetAccessLevel | [.EmptySociety](#EmptySociety) | [.GetAccessLevelOut](#GetAccessLevelOut) | Метод получения уровней доступа |
 | GetPermissions | [.EmptySociety](#EmptySociety) | [.GetPermissionsOut](#GetPermissionsOut) | Метод получения разрешения |
+| SubscribeToSociety | [.SubscribeToSocietyIn](#SubscribeToSocietyIn) | [.SubscribeToSocietyOut](#SubscribeToSocietyOut) | Подписка на сообщество |
+| UnsubscribeFromSociety | [.UnsubscribeFromSocietyIn](#UnsubscribeFromSocietyIn) | [.UnsubscribeFromSocietyOut](#UnsubscribeFromSocietyOut) | Отписка от сообщества |
+| GetUsersForSociety | [.GetUsersForSocietyIn](#GetUsersForSocietyIn) | [.GetUsersForSocietyOut](#GetUsersForSocietyOut) | Список юзеров, подписанных на сообщество |
+| GetSocietiesForUser | [.GetSocietiesForUserIn](#GetSocietiesForUserIn) | [.GetSocietiesForUserOut](#GetSocietiesForUserOut) | Список сообществ, на которые подписан юзер |
 
  
 

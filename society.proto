@@ -9,9 +9,13 @@ service SocietyService {
   rpc GetAccessLevel(EmptySociety) returns (GetAccessLevelOut){};
   // Метод получения разрешения
   rpc GetPermissions(EmptySociety) returns (GetPermissionsOut){};
+  //Подписка на сообщество
   rpc SubscribeToSociety(SubscribeToSocietyIn) returns (SubscribeToSocietyOut){};
+  //Отписка от сообщества
   rpc UnsubscribeFromSociety(UnsubscribeFromSocietyIn) returns (UnsubscribeFromSocietyOut){};
+  //Список юзеров, подписанных на сообщество
   rpc GetUsersForSociety(GetUsersForSocietyIn) returns (GetUsersForSocietyOut){};
+  //Список сообществ, на которые подписан юзер
   rpc GetSocietiesForUser(GetSocietiesForUserIn) returns (GetSocietiesForUserOut){};
 }
 
@@ -68,45 +72,68 @@ message Permission {
   string description = 3;
 }
 
+//Данные для подписки на сообщество
 message SubscribeToSocietyIn {
+  //ID сообщества
   int64 society_id = 1;
 }
 
+//Возвращение данных о подписке на сообщество
 message SubscribeToSocietyOut {
+  //Получилось ли подписаться или нет
   bool success = 1;
 }
 
+//Данные для отписки от сообщества
 message UnsubscribeFromSocietyIn {
+  //ID сообщества
   int64 society_id = 1;
 }
 
+//Возвращение данных об отписке от сообщества
 message UnsubscribeFromSocietyOut {
+  //Получилось ли подписаться или нет
   bool success = 1;
 }
 
+//Данные о подписчиках сообщества
 message GetUsersForSocietyIn {
+  //ID сообщества
   int64 society_id = 1;
 }
 
+//Возвращение данных о подписчиках сообщества
 message GetUsersForSocietyOut {
+  //Список юзеров, подписанных на сообщество
   repeated User users = 1;
 }
 
+//Список параметров юзеров, подписанных на сообщество
 message User {
+  //Имя пользователя
   string name = 1;
+  //Ссылка на аватарку пользователя
   string avatar_link = 2;
 }
 
+//Данные о подписках юзера
 message GetSocietiesForUserIn {
+  //UUID юзера
   string user_uuid = 1;
 }
 
+//Возвращение данных о подписках юзера
 message GetSocietiesForUserOut {
+  //Список сообществ, на которые подписан юзер
   repeated Society society= 1;
 }
 
+//Данные параметров о подписках юзера
 message Society {
+  //Название сообщества
   string name = 1;
+  //Ссылка на аватарку сообщества
   string avatar_link = 2;
+  //ID сообщества
   int64 society_id = 3;
 }
