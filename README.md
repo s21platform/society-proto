@@ -20,7 +20,7 @@
     - [SubscribeToSocietyOut](#-SubscribeToSocietyOut)
     - [UnsubscribeFromSocietyIn](#-UnsubscribeFromSocietyIn)
     - [UnsubscribeFromSocietyOut](#-UnsubscribeFromSocietyOut)
-    - [User](#-User)
+    - [UserSociety](#-UserSociety)
   
     - [SocietyService](#-SocietyService)
   
@@ -144,7 +144,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| users | [User](#User) | repeated | Список юзеров, подписанных на сообщество |
+| users | [UserSociety](#UserSociety) | repeated | Список юзеров, подписанных на сообщество |
 
 
 
@@ -279,9 +279,9 @@
 
 
 
-<a name="-User"></a>
+<a name="-UserSociety"></a>
 
-### User
+### UserSociety
 Список параметров юзеров, подписанных на сообщество
 
 
