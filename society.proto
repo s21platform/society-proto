@@ -105,11 +105,11 @@ message GetUsersForSocietyIn {
 //Возвращение данных о подписчиках сообщества
 message GetUsersForSocietyOut {
   //Список юзеров, подписанных на сообщество
-  repeated User users = 1;
+  repeated ListUserSociety users = 1;
 }
 
 //Список параметров юзеров, подписанных на сообщество
-message User {
+message ListUserSociety {
   //Имя пользователя
   string name = 1;
   //Ссылка на аватарку пользователя

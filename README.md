@@ -12,6 +12,7 @@
     - [GetSocietiesForUserOut](#-GetSocietiesForUserOut)
     - [GetUsersForSocietyIn](#-GetUsersForSocietyIn)
     - [GetUsersForSocietyOut](#-GetUsersForSocietyOut)
+    - [ListUserSociety](#-ListUserSociety)
     - [Permission](#-Permission)
     - [SetSocietyIn](#-SetSocietyIn)
     - [SetSocietyOut](#-SetSocietyOut)
@@ -20,7 +21,6 @@
     - [SubscribeToSocietyOut](#-SubscribeToSocietyOut)
     - [UnsubscribeFromSocietyIn](#-UnsubscribeFromSocietyIn)
     - [UnsubscribeFromSocietyOut](#-UnsubscribeFromSocietyOut)
-    - [User](#-User)
   
     - [SocietyService](#-SocietyService)
   
@@ -144,7 +144,23 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| users | [User](#User) | repeated | Список юзеров, подписанных на сообщество |
+| users | [ListUserSociety](#ListUserSociety) | repeated | Список юзеров, подписанных на сообщество |
+
+
+
+
+
+
+<a name="-ListUserSociety"></a>
+
+### ListUserSociety
+Список параметров юзеров, подписанных на сообщество
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Имя пользователя |
+| avatar_link | [string](#string) |  | Ссылка на аватарку пользователя |
 
 
 
@@ -273,22 +289,6 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | success | [bool](#bool) |  | Получилось ли подписаться или нет |
-
-
-
-
-
-
-<a name="-User"></a>
-
-### User
-Список параметров юзеров, подписанных на сообщество
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Имя пользователя |
-| avatar_link | [string](#string) |  | Ссылка на аватарку пользователя |
 
 
 
