@@ -952,6 +952,7 @@ type GetSocietyInfoOut struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Наименование сообщества
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Описание сообщества
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`

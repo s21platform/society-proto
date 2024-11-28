@@ -150,7 +150,7 @@ message GetSocietyInfoIn{
 
 //Данные, возвращаемые о информации сообщества
 message GetSocietyInfoOut{
-  //Наименование
+  //Наименование сообщества
   string name = 1;
   //Описание сообщества
   string description = 2;

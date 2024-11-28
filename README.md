@@ -148,7 +148,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
+| name | [string](#string) |  | Наименование сообщества |
 | description | [string](#string) |  | Описание сообщества |
 | ownerUUID | [string](#string) |  | UUID владельца сообщества |
 | photoUrl | [string](#string) |  | URL фотографии сообщества |
