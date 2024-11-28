@@ -19,6 +19,8 @@ service SocietyService {
   rpc GetSocietiesForUser(GetSocietiesForUserIn) returns (GetSocietiesForUserOut){};
   //Метод для получения информации о сообществе
   rpc GetSocietyInfo(GetSocietyInfoIn) returns (GetSocietyInfoOut){};
+  //Метод для получения списка сообществ
+  rpc GetSocietyWithOffset(GetSocietyWithOffsetIn) returns (GetSocietyWithOffsetOut){};
 }
 
 //Данные для создания сообщества
@@ -157,4 +159,24 @@ message GetSocietyInfoOut{
   string photoUrl = 4;
   //Приватность сообщества
   bool isPrivate  = 5;
+}
+
+//Данные, для получения списка сообществ
+message GetSocietyWithOffsetIn{
+  //Количество возвращаемых записей
+  int64 limit = 1;
+  //С какой записи начинаем
+  int64 offset = 2;
+  //Если поле пустое - выводит все группы, иначе поиск по подстроке подходящие
+  string name = 3;
+}
+
+//Данные, возвращаемые при получении списка сообществ
+message GetSocietyWithOffsetOut{
+  //Список сообществ, на которые подписан юзер
+  repeated Society society = 1;
+  //Общее кол-во возвращенных сообществ
+  int64 total = 2;
+  //Состоит ли пользователь в группе или нет true - cocтоит, false - не состоит
+  bool isMember = 3;
 }

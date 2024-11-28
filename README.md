@@ -12,6 +12,8 @@
     - [GetSocietiesForUserOut](#-GetSocietiesForUserOut)
     - [GetSocietyInfoIn](#-GetSocietyInfoIn)
     - [GetSocietyInfoOut](#-GetSocietyInfoOut)
+    - [GetSocietyWithOffsetIn](#-GetSocietyWithOffsetIn)
+    - [GetSocietyWithOffsetOut](#-GetSocietyWithOffsetOut)
     - [GetUsersForSocietyIn](#-GetUsersForSocietyIn)
     - [GetUsersForSocietyOut](#-GetUsersForSocietyOut)
     - [Permission](#-Permission)
@@ -151,6 +153,40 @@
 | ownerUUID | [string](#string) |  | UUID владельца сообщества |
 | photoUrl | [string](#string) |  | URL фотографии сообщества |
 | isPrivate | [bool](#bool) |  | Приватность сообщества |
+
+
+
+
+
+
+<a name="-GetSocietyWithOffsetIn"></a>
+
+### GetSocietyWithOffsetIn
+Данные, для получения списка сообществ
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| limit | [int64](#int64) |  | Количество возвращаемых записей |
+| offset | [int64](#int64) |  | С какой записи начинаем |
+| name | [string](#string) |  | Если поле пустое - выводит все группы, иначе поиск по подстроке подходящие |
+
+
+
+
+
+
+<a name="-GetSocietyWithOffsetOut"></a>
+
+### GetSocietyWithOffsetOut
+Данные, возвращаемые при получении списка сообществ
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society | [Society](#Society) | repeated | Список сообществ, на которые подписан юзер |
+| total | [int64](#int64) |  | Общее кол-во возвращенных сообществ |
+| isMember | [bool](#bool) |  | Состоит ли пользователь в группе или нет true - cocтоит, false - не состоит |
 
 
 
@@ -352,6 +388,7 @@
 | GetUsersForSociety | [.GetUsersForSocietyIn](#GetUsersForSocietyIn) | [.GetUsersForSocietyOut](#GetUsersForSocietyOut) | Список юзеров, подписанных на сообщество |
 | GetSocietiesForUser | [.GetSocietiesForUserIn](#GetSocietiesForUserIn) | [.GetSocietiesForUserOut](#GetSocietiesForUserOut) | Список сообществ, на которые подписан юзер |
 | GetSocietyInfo | [.GetSocietyInfoIn](#GetSocietyInfoIn) | [.GetSocietyInfoOut](#GetSocietyInfoOut) | Метод для получения информации о сообществе |
+| GetSocietyWithOffset | [.GetSocietyWithOffsetIn](#GetSocietyWithOffsetIn) | [.GetSocietyWithOffsetOut](#GetSocietyWithOffsetOut) | Метод для получения списка сообществ |
 
  
 

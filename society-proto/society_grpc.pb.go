@@ -27,6 +27,7 @@ const (
 	SocietyService_GetUsersForSociety_FullMethodName     = "/SocietyService/GetUsersForSociety"
 	SocietyService_GetSocietiesForUser_FullMethodName    = "/SocietyService/GetSocietiesForUser"
 	SocietyService_GetSocietyInfo_FullMethodName         = "/SocietyService/GetSocietyInfo"
+	SocietyService_GetSocietyWithOffset_FullMethodName   = "/SocietyService/GetSocietyWithOffset"
 )
 
 // SocietyServiceClient is the client API for SocietyService service.
@@ -49,6 +50,8 @@ type SocietyServiceClient interface {
 	GetSocietiesForUser(ctx context.Context, in *GetSocietiesForUserIn, opts ...grpc.CallOption) (*GetSocietiesForUserOut, error)
 	// Метод для получения информации о сообществе
 	GetSocietyInfo(ctx context.Context, in *GetSocietyInfoIn, opts ...grpc.CallOption) (*GetSocietyInfoOut, error)
+	// Метод для получения списка сообществ
+	GetSocietyWithOffset(ctx context.Context, in *GetSocietyWithOffsetIn, opts ...grpc.CallOption) (*GetSocietyWithOffsetOut, error)
 }
 
 type societyServiceClient struct {
@@ -139,6 +142,16 @@ func (c *societyServiceClient) GetSocietyInfo(ctx context.Context, in *GetSociet
 	return out, nil
 }
 
+func (c *societyServiceClient) GetSocietyWithOffset(ctx context.Context, in *GetSocietyWithOffsetIn, opts ...grpc.CallOption) (*GetSocietyWithOffsetOut, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSocietyWithOffsetOut)
+	err := c.cc.Invoke(ctx, SocietyService_GetSocietyWithOffset_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocietyServiceServer is the server API for SocietyService service.
 // All implementations must embed UnimplementedSocietyServiceServer
 // for forward compatibility.
@@ -159,6 +172,8 @@ type SocietyServiceServer interface {
 	GetSocietiesForUser(context.Context, *GetSocietiesForUserIn) (*GetSocietiesForUserOut, error)
 	// Метод для получения информации о сообществе
 	GetSocietyInfo(context.Context, *GetSocietyInfoIn) (*GetSocietyInfoOut, error)
+	// Метод для получения списка сообществ
+	GetSocietyWithOffset(context.Context, *GetSocietyWithOffsetIn) (*GetSocietyWithOffsetOut, error)
 	mustEmbedUnimplementedSocietyServiceServer()
 }
 
@@ -192,6 +207,9 @@ func (UnimplementedSocietyServiceServer) GetSocietiesForUser(context.Context, *G
 }
 func (UnimplementedSocietyServiceServer) GetSocietyInfo(context.Context, *GetSocietyInfoIn) (*GetSocietyInfoOut, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSocietyInfo not implemented")
+}
+func (UnimplementedSocietyServiceServer) GetSocietyWithOffset(context.Context, *GetSocietyWithOffsetIn) (*GetSocietyWithOffsetOut, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSocietyWithOffset not implemented")
 }
 func (UnimplementedSocietyServiceServer) mustEmbedUnimplementedSocietyServiceServer() {}
 func (UnimplementedSocietyServiceServer) testEmbeddedByValue()                        {}
@@ -358,6 +376,24 @@ func _SocietyService_GetSocietyInfo_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocietyService_GetSocietyWithOffset_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSocietyWithOffsetIn)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocietyServiceServer).GetSocietyWithOffset(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocietyService_GetSocietyWithOffset_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocietyServiceServer).GetSocietyWithOffset(ctx, req.(*GetSocietyWithOffsetIn))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocietyService_ServiceDesc is the grpc.ServiceDesc for SocietyService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -396,6 +432,10 @@ var SocietyService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetSocietyInfo",
 			Handler:    _SocietyService_GetSocietyInfo_Handler,
+		},
+		{
+			MethodName: "GetSocietyWithOffset",
+			Handler:    _SocietyService_GetSocietyWithOffset_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
