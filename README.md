@@ -10,6 +10,8 @@
     - [GetPermissionsOut](#-GetPermissionsOut)
     - [GetSocietiesForUserIn](#-GetSocietiesForUserIn)
     - [GetSocietiesForUserOut](#-GetSocietiesForUserOut)
+    - [GetSocietyInfoIn](#-GetSocietyInfoIn)
+    - [GetSocietyInfoOut](#-GetSocietyInfoOut)
     - [GetUsersForSocietyIn](#-GetUsersForSocietyIn)
     - [GetUsersForSocietyOut](#-GetUsersForSocietyOut)
     - [Permission](#-Permission)
@@ -115,6 +117,40 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | society | [Society](#Society) | repeated | Список сообществ, на которые подписан юзер |
+
+
+
+
+
+
+<a name="-GetSocietyInfoIn"></a>
+
+### GetSocietyInfoIn
+Данные параметра для получения сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  | id необходимого сообщества |
+
+
+
+
+
+
+<a name="-GetSocietyInfoOut"></a>
+
+### GetSocietyInfoOut
+Данные, возвращаемые о информации сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  | Описание сообщества |
+| ownerUUID | [string](#string) |  | UUID владельца сообщества |
+| photoUrl | [string](#string) |  | URL фотографии сообщества |
+| isPrivate | [bool](#bool) |  | Приватность сообщества |
 
 
 
@@ -315,6 +351,7 @@
 | UnsubscribeFromSociety | [.UnsubscribeFromSocietyIn](#UnsubscribeFromSocietyIn) | [.UnsubscribeFromSocietyOut](#UnsubscribeFromSocietyOut) | Отписка от сообщества |
 | GetUsersForSociety | [.GetUsersForSocietyIn](#GetUsersForSocietyIn) | [.GetUsersForSocietyOut](#GetUsersForSocietyOut) | Список юзеров, подписанных на сообщество |
 | GetSocietiesForUser | [.GetSocietiesForUserIn](#GetSocietiesForUserIn) | [.GetSocietiesForUserOut](#GetSocietiesForUserOut) | Список сообществ, на которые подписан юзер |
+| GetSocietyInfo | [.GetSocietyInfoIn](#GetSocietyInfoIn) | [.GetSocietyInfoOut](#GetSocietyInfoOut) | Метод для получения информации о сообществе |
 
  
 
