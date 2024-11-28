@@ -10,6 +10,10 @@
     - [GetPermissionsOut](#-GetPermissionsOut)
     - [GetSocietiesForUserIn](#-GetSocietiesForUserIn)
     - [GetSocietiesForUserOut](#-GetSocietiesForUserOut)
+    - [GetSocietyInfoIn](#-GetSocietyInfoIn)
+    - [GetSocietyInfoOut](#-GetSocietyInfoOut)
+    - [GetSocietyWithOffsetIn](#-GetSocietyWithOffsetIn)
+    - [GetSocietyWithOffsetOut](#-GetSocietyWithOffsetOut)
     - [GetUsersForSocietyIn](#-GetUsersForSocietyIn)
     - [GetUsersForSocietyOut](#-GetUsersForSocietyOut)
     - [Permission](#-Permission)
@@ -115,6 +119,74 @@
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | society | [Society](#Society) | repeated | Список сообществ, на которые подписан юзер |
+
+
+
+
+
+
+<a name="-GetSocietyInfoIn"></a>
+
+### GetSocietyInfoIn
+Данные параметра для получения сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [int64](#int64) |  | id необходимого сообщества |
+
+
+
+
+
+
+<a name="-GetSocietyInfoOut"></a>
+
+### GetSocietyInfoOut
+Данные, возвращаемые о информации сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Наименование сообщества |
+| description | [string](#string) |  | Описание сообщества |
+| ownerUUID | [string](#string) |  | UUID владельца сообщества |
+| photoUrl | [string](#string) |  | URL фотографии сообщества |
+| isPrivate | [bool](#bool) |  | Приватность сообщества |
+
+
+
+
+
+
+<a name="-GetSocietyWithOffsetIn"></a>
+
+### GetSocietyWithOffsetIn
+Данные, для получения списка сообществ
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| limit | [int64](#int64) |  | Количество возвращаемых записей |
+| offset | [int64](#int64) |  | С какой записи начинаем |
+| name | [string](#string) |  | Если поле пустое - выводит все группы, иначе поиск по подстроке подходящие |
+
+
+
+
+
+
+<a name="-GetSocietyWithOffsetOut"></a>
+
+### GetSocietyWithOffsetOut
+Данные, возвращаемые при получении списка сообществ
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| society | [Society](#Society) | repeated | Список сообществ, на которые подписан юзер |
+| total | [int64](#int64) |  | Общее кол-во возвращенных сообществ |
+| isMember | [bool](#bool) |  | Состоит ли пользователь в группе или нет true - cocтоит, false - не состоит |
 
 
 
@@ -315,6 +387,8 @@
 | UnsubscribeFromSociety | [.UnsubscribeFromSocietyIn](#UnsubscribeFromSocietyIn) | [.UnsubscribeFromSocietyOut](#UnsubscribeFromSocietyOut) | Отписка от сообщества |
 | GetUsersForSociety | [.GetUsersForSocietyIn](#GetUsersForSocietyIn) | [.GetUsersForSocietyOut](#GetUsersForSocietyOut) | Список юзеров, подписанных на сообщество |
 | GetSocietiesForUser | [.GetSocietiesForUserIn](#GetSocietiesForUserIn) | [.GetSocietiesForUserOut](#GetSocietiesForUserOut) | Список сообществ, на которые подписан юзер |
+| GetSocietyInfo | [.GetSocietyInfoIn](#GetSocietyInfoIn) | [.GetSocietyInfoOut](#GetSocietyInfoOut) | Метод для получения информации о сообществе |
+| GetSocietyWithOffset | [.GetSocietyWithOffsetIn](#GetSocietyWithOffsetIn) | [.GetSocietyWithOffsetOut](#GetSocietyWithOffsetOut) | Метод для получения списка сообществ |
 
  
 
