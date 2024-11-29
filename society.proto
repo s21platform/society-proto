@@ -140,6 +140,8 @@ message Society {
   string avatar_link = 2;
   //ID сообщества
   int64 society_id = 3;
+  //Состоит ли пользователь в группе: true - cocтоит, false - не состоит
+  bool isMember = 4;
 }
 
 //Данные параметра для получения сообщества
@@ -178,6 +180,4 @@ message GetSocietyWithOffsetOut{
   repeated Society society = 1;
   //Общее кол-во возвращенных сообществ
   int64 total = 2;
-  //Состоит ли пользователь в группе или нет true - cocтоит, false - не состоит
-  bool isMember = 3;
 }
