@@ -118,6 +118,8 @@ message UserSociety {
   string name = 1;
   //Ссылка на аватарку пользователя
   string avatar_link = 2;
+  //UUID юзера
+  string user_uuid = 3;
 }
 
 //Данные о подписках юзера

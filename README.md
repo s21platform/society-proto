@@ -361,6 +361,7 @@
 | ----- | ---- | ----- | ----------- |
 | name | [string](#string) |  | Имя пользователя |
 | avatar_link | [string](#string) |  | Ссылка на аватарку пользователя |
+| user_uuid | [string](#string) |  | UUID юзера |
 
 
 
