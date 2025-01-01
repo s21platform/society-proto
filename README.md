@@ -285,6 +285,7 @@
 | avatar_link | [string](#string) |  | Ссылка на аватарку сообщества |
 | society_id | [int64](#int64) |  | ID сообщества |
 | isMember | [bool](#bool) |  | Состоит ли пользователь в группе: true - cocтоит, false - не состоит |
+| isPrivate | [bool](#bool) |  | Приватное сообщество: true - да, false - нет |
 
 
 
