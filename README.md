@@ -153,6 +153,7 @@
 | ownerUUID | [string](#string) |  | UUID владельца сообщества |
 | photoUrl | [string](#string) |  | URL фотографии сообщества |
 | isPrivate | [bool](#bool) |  | Приватность сообщества |
+| countSubscribers | [int64](#int64) |  | Кол-во подписчиков сообщества |
 
 
 
