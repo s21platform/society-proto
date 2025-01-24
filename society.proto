@@ -21,6 +21,8 @@ service SocietyService {
   rpc GetSocietyInfo(GetSocietyInfoIn) returns (GetSocietyInfoOut){};
   //Метод для получения списка сообществ
   rpc GetSocietyWithOffset(GetSocietyWithOffsetIn) returns (GetSocietyWithOffsetOut){};
+  //Метод обновления сообщества
+  rpc UpdateSociety(UpdateSocietyIn) returns (EmptySociety){};
 }
 
 //Данные для создания сообщества
@@ -187,4 +189,18 @@ message GetSocietyWithOffsetOut{
   repeated Society society = 1;
   //Общее кол-во возвращенных сообществ
   int64 total = 2;
+}
+
+//Данные, для обновления сообщества
+message UpdateSocietyIn{
+  //Id-society
+  string name = 1;
+  //Описание
+  string description = 2;
+  //Приватность сообщества
+  bool is_private = 3;
+  //Направление
+  int64 direction_id = 4;
+  //Уровень доступа
+  int64 access_level_id = 5;
 }

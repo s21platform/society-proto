@@ -24,6 +24,7 @@
     - [SubscribeToSocietyOut](#-SubscribeToSocietyOut)
     - [UnsubscribeFromSocietyIn](#-UnsubscribeFromSocietyIn)
     - [UnsubscribeFromSocietyOut](#-UnsubscribeFromSocietyOut)
+    - [UpdateSocietyIn](#-UpdateSocietyIn)
     - [UserSociety](#-UserSociety)
   
     - [SocietyService](#-SocietyService)
@@ -353,6 +354,25 @@
 
 
 
+<a name="-UpdateSocietyIn"></a>
+
+### UpdateSocietyIn
+Данные, для обновления сообщества
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Id-society |
+| description | [string](#string) |  | Описание |
+| is_private | [bool](#bool) |  | Приватность сообщества |
+| direction_id | [int64](#int64) |  | Направление |
+| access_level_id | [int64](#int64) |  | Уровень доступа |
+
+
+
+
+
+
 <a name="-UserSociety"></a>
 
 ### UserSociety
@@ -392,6 +412,7 @@
 | GetSocietiesForUser | [.GetSocietiesForUserIn](#GetSocietiesForUserIn) | [.GetSocietiesForUserOut](#GetSocietiesForUserOut) | Список сообществ, на которые подписан юзер |
 | GetSocietyInfo | [.GetSocietyInfoIn](#GetSocietyInfoIn) | [.GetSocietyInfoOut](#GetSocietyInfoOut) | Метод для получения информации о сообществе |
 | GetSocietyWithOffset | [.GetSocietyWithOffsetIn](#GetSocietyWithOffsetIn) | [.GetSocietyWithOffsetOut](#GetSocietyWithOffsetOut) | Метод для получения списка сообществ |
+| UpdateSociety | [.UpdateSocietyIn](#UpdateSocietyIn) | [.EmptySociety](#EmptySociety) | Метод обновления сообщества |
 
  
 
