@@ -194,13 +194,15 @@ message GetSocietyWithOffsetOut{
 //Данные, для обновления сообщества
 message UpdateSocietyIn{
   //Id-society
-  string name = 1;
-  //Описание
-  string description = 2;
+  int64 id = 1;
+  //Название сообщества
+  string name = 2;
+  //Описание сообщества
+  string description = 3;
   //Приватность сообщества
-  bool is_private = 3;
+  bool is_private = 4;
   //Направление
-  int64 direction_id = 4;
+  int64 direction_id = 5;
   //Уровень доступа
-  int64 access_level_id = 5;
+  int64 access_level_id = 6;
 }
