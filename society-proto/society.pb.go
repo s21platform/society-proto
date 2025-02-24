@@ -2,7 +2,6 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        v5.27.1
-
 // source: society.proto
 
 package society_proto
@@ -12,7 +11,6 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
-	unsafe "unsafe"
 )
 
 const (
@@ -35,7 +33,7 @@ type SetSocietyIn struct {
 	PostPermissionID int64 `protobuf:"varint,3,opt,name=postPermissionID,proto3" json:"postPermissionID,omitempty"`
 	// Настройка поиска сообщества
 	IsSearch bool `protobuf:"varint,4,opt,name=isSearch,proto3" json:"isSearch,omitempty"`
-
+}
 
 func (x *SetSocietyIn) Reset() {
 	*x = SetSocietyIn{}
@@ -104,7 +102,6 @@ type SetSocietyOut struct {
 
 	// UUID созданного сообщества
 	SocietyUUID string `protobuf:"bytes,1,opt,name=societyUUID,proto3" json:"societyUUID,omitempty"`
-
 }
 
 func (x *SetSocietyOut) Reset() {
@@ -167,7 +164,7 @@ type UpdateSocietyIn struct {
 	IsSearch bool `protobuf:"varint,7,opt,name=isSearch,proto3" json:"isSearch,omitempty"`
 	// Список тегов сообщества
 	TagsID []*TagsID `protobuf:"bytes,8,rep,name=tagsID,proto3" json:"tagsID,omitempty"`
-
+}
 
 func (x *UpdateSocietyIn) Reset() {
 	*x = UpdateSocietyIn{}
@@ -258,9 +255,9 @@ func (x *UpdateSocietyIn) GetTagsID() []*TagsID {
 }
 
 type EmptySociety struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
+	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
 }
 
 func (x *EmptySociety) Reset() {
@@ -792,9 +789,7 @@ type Society struct {
 	// Состоит пользователь в сообществе: true - cocтоит, false - не состоит
 	IsMember bool `protobuf:"varint,4,opt,name=isMember,proto3" json:"isMember,omitempty"`
 	// Приватное сообщество: true - да, false - нет
-	IsPrivate     bool `protobuf:"varint,5,opt,name=isPrivate,proto3" json:"isPrivate,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	IsPrivate bool `protobuf:"varint,5,opt,name=isPrivate,proto3" json:"isPrivate,omitempty"`
 }
 
 func (x *Society) Reset() {
@@ -989,7 +984,7 @@ func (x *GetSocietyForUserWithOffsetOut) GetTotal() int64 {
 
 var File_society_proto protoreflect.FileDescriptor
 
-var file_society_proto_rawDesc = string([]byte{
+var file_society_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x73, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22,
 	0x86, 0x01, 0x0a, 0x0c, 0x53, 0x65, 0x74, 0x53, 0x6f, 0x63, 0x69, 0x65, 0x74, 0x79, 0x49, 0x6e,
 	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
@@ -1127,12 +1122,12 @@ var file_society_proto_rawDesc = string([]byte{
 
 var (
 	file_society_proto_rawDescOnce sync.Once
-	file_society_proto_rawDescData []byte
+	file_society_proto_rawDescData = file_society_proto_rawDesc
 )
 
 func file_society_proto_rawDescGZIP() []byte {
 	file_society_proto_rawDescOnce.Do(func() {
-		file_society_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_society_proto_rawDesc), len(file_society_proto_rawDesc)))
+		file_society_proto_rawDescData = protoimpl.X.CompressGZIP(file_society_proto_rawDescData)
 	})
 	return file_society_proto_rawDescData
 }
@@ -1374,7 +1369,7 @@ func file_society_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_society_proto_rawDesc), len(file_society_proto_rawDesc)),
+			RawDescriptor: file_society_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   15,
 			NumExtensions: 0,
@@ -1385,6 +1380,7 @@ func file_society_proto_init() {
 		MessageInfos:      file_society_proto_msgTypes,
 	}.Build()
 	File_society_proto = out.File
+	file_society_proto_rawDesc = nil
 	file_society_proto_goTypes = nil
 	file_society_proto_depIdxs = nil
 }

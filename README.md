@@ -263,19 +263,6 @@
 
 ### UpdateSocietyIn
 
-Данные, для обновления сообщества
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  | Id-society |
-| name | [string](#string) |  | Название сообщества |
-| description | [string](#string) |  | Описание сообщества |
-| is_private | [bool](#bool) |  | Приватность сообщества |
-| direction_id | [int64](#int64) |  | Направление |
-| access_level_id | [int64](#int64) |  | Уровень доступа |
-
-
 
 
 | Field | Type | Label | Description |
