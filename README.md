@@ -4,28 +4,21 @@
 ## Table of Contents
 
 - [society.proto](#society-proto)
-    - [AccessLevel](#-AccessLevel)
     - [EmptySociety](#-EmptySociety)
-    - [GetAccessLevelOut](#-GetAccessLevelOut)
-    - [GetPermissionsOut](#-GetPermissionsOut)
-    - [GetSocietiesForUserIn](#-GetSocietiesForUserIn)
-    - [GetSocietiesForUserOut](#-GetSocietiesForUserOut)
+    - [GetSocietyForUserWithOffsetIn](#-GetSocietyForUserWithOffsetIn)
+    - [GetSocietyForUserWithOffsetOut](#-GetSocietyForUserWithOffsetOut)
     - [GetSocietyInfoIn](#-GetSocietyInfoIn)
     - [GetSocietyInfoOut](#-GetSocietyInfoOut)
     - [GetSocietyWithOffsetIn](#-GetSocietyWithOffsetIn)
     - [GetSocietyWithOffsetOut](#-GetSocietyWithOffsetOut)
-    - [GetUsersForSocietyIn](#-GetUsersForSocietyIn)
-    - [GetUsersForSocietyOut](#-GetUsersForSocietyOut)
-    - [Permission](#-Permission)
+    - [RemoveSocietyIn](#-RemoveSocietyIn)
     - [SetSocietyIn](#-SetSocietyIn)
     - [SetSocietyOut](#-SetSocietyOut)
     - [Society](#-Society)
     - [SubscribeToSocietyIn](#-SubscribeToSocietyIn)
-    - [SubscribeToSocietyOut](#-SubscribeToSocietyOut)
-    - [UnsubscribeFromSocietyIn](#-UnsubscribeFromSocietyIn)
-    - [UnsubscribeFromSocietyOut](#-UnsubscribeFromSocietyOut)
+    - [TagsID](#-TagsID)
+    - [UnSubscribeToSocietyIn](#-UnSubscribeToSocietyIn)
     - [UpdateSocietyIn](#-UpdateSocietyIn)
-    - [UserSociety](#-UserSociety)
   
     - [SocietyService](#-SocietyService)
   
@@ -40,86 +33,43 @@
 
 
 
-<a name="-AccessLevel"></a>
-
-### AccessLevel
-Описание уровней доступа
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  | Идентификатор уровня доступа |
-| access_level | [string](#string) |  | Название или описание уровня доступа |
-
-
-
-
-
-
 <a name="-EmptySociety"></a>
 
 ### EmptySociety
-Пустой объект
 
 
 
 
 
 
-<a name="-GetAccessLevelOut"></a>
 
-### GetAccessLevelOut
-Объект возвращения уровней доступа
+<a name="-GetSocietyForUserWithOffsetIn"></a>
+
+### GetSocietyForUserWithOffsetIn
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| levels | [AccessLevel](#AccessLevel) | repeated | Список уровней доступа |
+| limit | [int64](#int64) |  | Лимит возвращаемых записей |
+| total | [int64](#int64) |  | Тотал записи с которой возвращаем |
+| userUUID | [string](#string) |  | UUID пользователя |
 
 
 
 
 
 
-<a name="-GetPermissionsOut"></a>
+<a name="-GetSocietyForUserWithOffsetOut"></a>
 
-### GetPermissionsOut
-Объект возвращения списка разрешений
+### GetSocietyForUserWithOffsetOut
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| permissions | [Permission](#Permission) | repeated | Список разрешений. |
-
-
-
-
-
-
-<a name="-GetSocietiesForUserIn"></a>
-
-### GetSocietiesForUserIn
-Данные о подписках юзера
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| user_uuid | [string](#string) |  | UUID юзера |
-
-
-
-
-
-
-<a name="-GetSocietiesForUserOut"></a>
-
-### GetSocietiesForUserOut
-Возвращение данных о подписках юзера
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| society | [Society](#Society) | repeated | Список сообществ, на которые подписан юзер |
+| societies | [Society](#Society) | repeated | Список сообществ |
+| total | [int64](#int64) |  | Количество найденых записей |
 
 
 
@@ -129,12 +79,12 @@
 <a name="-GetSocietyInfoIn"></a>
 
 ### GetSocietyInfoIn
-Данные параметра для получения сообщества
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  | id необходимого сообщества |
+| societyUUID | [string](#string) |  | UUID сообщества |
 
 
 
@@ -144,17 +94,20 @@
 <a name="-GetSocietyInfoOut"></a>
 
 ### GetSocietyInfoOut
-Данные, возвращаемые о информации сообщества
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Наименование сообщества |
+| name | [string](#string) |  | Название сообщества |
 | description | [string](#string) |  | Описание сообщества |
-| ownerUUID | [string](#string) |  | UUID владельца сообщества |
-| photoUrl | [string](#string) |  | URL фотографии сообщества |
-| isPrivate | [bool](#bool) |  | Приватность сообщества |
-| countSubscribers | [int64](#int64) |  | Кол-во подписчиков сообщества |
+| ownerUUID | [string](#string) |  | Владелец сообщества |
+| photoURL | [string](#string) |  | Аватар сообщества |
+| formatID | [int64](#int64) |  | Формат сообщества |
+| postPermission | [int64](#int64) |  | Правила сообщений в сообществе |
+| isSearch | [bool](#bool) |  | Настройка поиска сообщества |
+| countSubscribe | [int64](#int64) |  | Количество подписчиков сообщества |
+| tagsID | [TagsID](#TagsID) | repeated | Теги сообщества |
 
 
 
@@ -164,14 +117,14 @@
 <a name="-GetSocietyWithOffsetIn"></a>
 
 ### GetSocietyWithOffsetIn
-Данные, для получения списка сообществ
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| limit | [int64](#int64) |  | Количество возвращаемых записей |
-| offset | [int64](#int64) |  | С какой записи начинаем |
-| name | [string](#string) |  | Если поле пустое - выводит все группы, иначе поиск по подстроке подходящие |
+| limit | [int64](#int64) |  | Лимит возвращаемых записей |
+| total | [int64](#int64) |  | Тотал записи с которой возвращаем |
+| name | [string](#string) |  | Название сообщества по которому происходит поиск, если пусто то все сообщества |
 
 
 
@@ -181,60 +134,28 @@
 <a name="-GetSocietyWithOffsetOut"></a>
 
 ### GetSocietyWithOffsetOut
-Данные, возвращаемые при получении списка сообществ
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| society | [Society](#Society) | repeated | Список сообществ, на которые подписан юзер |
-| total | [int64](#int64) |  | Общее кол-во возвращенных сообществ |
+| societies | [Society](#Society) | repeated | Список сообществ |
+| total | [int64](#int64) |  | Количество найденых записей |
 
 
 
 
 
 
-<a name="-GetUsersForSocietyIn"></a>
+<a name="-RemoveSocietyIn"></a>
 
-### GetUsersForSocietyIn
-Данные о подписчиках сообщества
+### RemoveSocietyIn
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| society_id | [int64](#int64) |  | ID сообщества |
-
-
-
-
-
-
-<a name="-GetUsersForSocietyOut"></a>
-
-### GetUsersForSocietyOut
-Возвращение данных о подписчиках сообщества
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| users | [UserSociety](#UserSociety) | repeated | Список юзеров, подписанных на сообщество |
-
-
-
-
-
-
-<a name="-Permission"></a>
-
-### Permission
-Описание разрешения
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [int64](#int64) |  | Уникальный идентификатор разрешения |
-| name | [string](#string) |  | Название разрешения |
-| description | [string](#string) |  | Описание разрешения |
+| societyUUID | [string](#string) |  | UUID сообщества |
 
 
 
@@ -244,16 +165,15 @@
 <a name="-SetSocietyIn"></a>
 
 ### SetSocietyIn
-Данные для создания сообщества
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Имя |
-| description | [string](#string) |  | Описание |
-| is_private | [bool](#bool) |  | Приватность |
-| direction_id | [int64](#int64) |  | Направление |
-| access_level_id | [int64](#int64) |  | Уровень доступа |
+| name | [string](#string) |  | Название сообщества |
+| formatID | [int64](#int64) |  | Формат сообщества |
+| postPermissionID | [int64](#int64) |  | Правила сообщений в сообществе |
+| isSearch | [bool](#bool) |  | Настройка поиска сообщества |
 
 
 
@@ -263,12 +183,12 @@
 <a name="-SetSocietyOut"></a>
 
 ### SetSocietyOut
-Объект ответа создания сообщества
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| society_id | [int64](#int64) |  | id созданного сообщества |
+| societyUUID | [string](#string) |  | UUID созданного сообщества |
 
 
 
@@ -278,15 +198,15 @@
 <a name="-Society"></a>
 
 ### Society
-Данные параметров о подписках юзера
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
+| societyUUID | [string](#string) |  | UUID сообщества |
 | name | [string](#string) |  | Название сообщества |
-| avatar_link | [string](#string) |  | Ссылка на аватарку сообщества |
-| society_id | [int64](#int64) |  | ID сообщества |
-| isMember | [bool](#bool) |  | Состоит ли пользователь в группе: true - cocтоит, false - не состоит |
+| photoURL | [string](#string) |  | Аватар сообщества |
+| isMember | [bool](#bool) |  | Состоит пользователь в сообществе: true - cocтоит, false - не состоит |
 | isPrivate | [bool](#bool) |  | Приватное сообщество: true - да, false - нет |
 
 
@@ -297,57 +217,42 @@
 <a name="-SubscribeToSocietyIn"></a>
 
 ### SubscribeToSocietyIn
-Данные для подписки на сообщество
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| society_id | [int64](#int64) |  | ID сообщества |
+| societyUUID | [string](#string) |  | UUID сообщества |
 
 
 
 
 
 
-<a name="-SubscribeToSocietyOut"></a>
+<a name="-TagsID"></a>
 
-### SubscribeToSocietyOut
-Возвращение данных о подписке на сообщество
+### TagsID
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| success | [bool](#bool) |  | Получилось ли подписаться или нет |
+| tagID | [int64](#int64) |  | ID тега |
 
 
 
 
 
 
-<a name="-UnsubscribeFromSocietyIn"></a>
+<a name="-UnSubscribeToSocietyIn"></a>
 
-### UnsubscribeFromSocietyIn
-Данные для отписки от сообщества
+### UnSubscribeToSocietyIn
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| society_id | [int64](#int64) |  | ID сообщества |
-
-
-
-
-
-
-<a name="-UnsubscribeFromSocietyOut"></a>
-
-### UnsubscribeFromSocietyOut
-Возвращение данных об отписке от сообщества
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| success | [bool](#bool) |  | Получилось ли подписаться или нет |
+| societyUUID | [string](#string) |  | UUID сообщества |
 
 
 
@@ -357,33 +262,19 @@
 <a name="-UpdateSocietyIn"></a>
 
 ### UpdateSocietyIn
-Данные, для обновления сообщества
+
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Id-society |
-| description | [string](#string) |  | Описание |
-| is_private | [bool](#bool) |  | Приватность сообщества |
-| direction_id | [int64](#int64) |  | Направление |
-| access_level_id | [int64](#int64) |  | Уровень доступа |
-
-
-
-
-
-
-<a name="-UserSociety"></a>
-
-### UserSociety
-Список параметров юзеров, подписанных на сообщество
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Имя пользователя |
-| avatar_link | [string](#string) |  | Ссылка на аватарку пользователя |
-| user_uuid | [string](#string) |  | UUID юзера |
+| societyUUID | [string](#string) |  | UUID сообщества |
+| name | [string](#string) |  | Название сообщества |
+| description | [string](#string) |  | Описание сообщества |
+| photoURL | [string](#string) |  | Аватар сообщества |
+| formatID | [int64](#int64) |  | Формат сообщества |
+| postPermission | [int64](#int64) |  | Правила сообщений в сообществе |
+| isSearch | [bool](#bool) |  | Настройка поиска сообщества |
+| tagsID | [TagsID](#TagsID) | repeated | Список тегов сообщества |
 
 
 
@@ -403,16 +294,14 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) | Метод создания сообщества |
-| GetAccessLevel | [.EmptySociety](#EmptySociety) | [.GetAccessLevelOut](#GetAccessLevelOut) | Метод получения уровней доступа |
-| GetPermissions | [.EmptySociety](#EmptySociety) | [.GetPermissionsOut](#GetPermissionsOut) | Метод получения разрешения |
-| SubscribeToSociety | [.SubscribeToSocietyIn](#SubscribeToSocietyIn) | [.SubscribeToSocietyOut](#SubscribeToSocietyOut) | Подписка на сообщество |
-| UnsubscribeFromSociety | [.UnsubscribeFromSocietyIn](#UnsubscribeFromSocietyIn) | [.UnsubscribeFromSocietyOut](#UnsubscribeFromSocietyOut) | Отписка от сообщества |
-| GetUsersForSociety | [.GetUsersForSocietyIn](#GetUsersForSocietyIn) | [.GetUsersForSocietyOut](#GetUsersForSocietyOut) | Список юзеров, подписанных на сообщество |
-| GetSocietiesForUser | [.GetSocietiesForUserIn](#GetSocietiesForUserIn) | [.GetSocietiesForUserOut](#GetSocietiesForUserOut) | Список сообществ, на которые подписан юзер |
-| GetSocietyInfo | [.GetSocietyInfoIn](#GetSocietyInfoIn) | [.GetSocietyInfoOut](#GetSocietyInfoOut) | Метод для получения информации о сообществе |
-| GetSocietyWithOffset | [.GetSocietyWithOffsetIn](#GetSocietyWithOffsetIn) | [.GetSocietyWithOffsetOut](#GetSocietyWithOffsetOut) | Метод для получения списка сообществ |
-| UpdateSociety | [.UpdateSocietyIn](#UpdateSocietyIn) | [.EmptySociety](#EmptySociety) | Метод обновления сообщества |
+| CreateSociety | [.SetSocietyIn](#SetSocietyIn) | [.SetSocietyOut](#SetSocietyOut) | Создание сообщества |
+| UpdateSociety | [.UpdateSocietyIn](#UpdateSocietyIn) | [.EmptySociety](#EmptySociety) | Настройка сообщества |
+| GetSocietyInfo | [.GetSocietyInfoIn](#GetSocietyInfoIn) | [.GetSocietyInfoOut](#GetSocietyInfoOut) | Информация по сообществу |
+| RemoveSociety | [.RemoveSocietyIn](#RemoveSocietyIn) | [.EmptySociety](#EmptySociety) | Удаление сообщества |
+| SubscribeToSociety | [.SubscribeToSocietyIn](#SubscribeToSocietyIn) | [.EmptySociety](#EmptySociety) | Подписка на сообщество |
+| UnSubscribeToSociety | [.UnSubscribeToSocietyIn](#UnSubscribeToSocietyIn) | [.EmptySociety](#EmptySociety) | Отписка от сообщества |
+| GetSocietyWithOffset | [.GetSocietyWithOffsetIn](#GetSocietyWithOffsetIn) | [.GetSocietyWithOffsetOut](#GetSocietyWithOffsetOut) | Список сообществ для поиска по названию сообщества |
+| GetSocietyForUserWithOffset | [.GetSocietyForUserWithOffsetIn](#GetSocietyForUserWithOffsetIn) | [.GetSocietyForUserWithOffsetOut](#GetSocietyForUserWithOffsetOut) | Список сообществ юзера |
 
  
 
