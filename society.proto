@@ -3,206 +3,149 @@ syntax = "proto3";
 option go_package = "./society-proto";
 
 service SocietyService {
-  //Метод создания сообщества
-  rpc CreateSociety(SetSocietyIn) returns (SetSocietyOut){};
-  //Метод получения уровней доступа
-  rpc GetAccessLevel(EmptySociety) returns (GetAccessLevelOut){};
-  // Метод получения разрешения
-  rpc GetPermissions(EmptySociety) returns (GetPermissionsOut){};
-  //Подписка на сообщество
-  rpc SubscribeToSociety(SubscribeToSocietyIn) returns (SubscribeToSocietyOut){};
-  //Отписка от сообщества
-  rpc UnsubscribeFromSociety(UnsubscribeFromSocietyIn) returns (UnsubscribeFromSocietyOut){};
-  //Список юзеров, подписанных на сообщество
-  rpc GetUsersForSociety(GetUsersForSocietyIn) returns (GetUsersForSocietyOut){};
-  //Список сообществ, на которые подписан юзер
-  rpc GetSocietiesForUser(GetSocietiesForUserIn) returns (GetSocietiesForUserOut){};
-  //Метод для получения информации о сообществе
-  rpc GetSocietyInfo(GetSocietyInfoIn) returns (GetSocietyInfoOut){};
-  //Метод для получения списка сообществ
-  rpc GetSocietyWithOffset(GetSocietyWithOffsetIn) returns (GetSocietyWithOffsetOut){};
-  //Метод обновления сообщества
-  rpc UpdateSociety(UpdateSocietyIn) returns (EmptySociety){};
+  // Создание сообщества
+  rpc CreateSociety (SetSocietyIn) returns (SetSocietyOut);
+  // Настройка сообщества
+  rpc UpdateSociety (UpdateSocietyIn) returns (EmptySociety);
+  // Информация по сообществу
+  rpc GetSocietyInfo (GetSocietyInfoIn) returns (GetSocietyInfoOut);
+  // Удаление сообщества
+  rpc RemoveSociety (RemoveSocietyIn) returns (EmptySociety);
+  // Подписка на сообщество
+  rpc SubscribeToSociety (SubscribeToSocietyIn) returns (EmptySociety);
+  // Отписка от сообщества
+  rpc UnSubscribeToSociety (UnSubscribeToSocietyIn) returns (EmptySociety);
+  // Список сообществ для поиска по названию сообщества
+  rpc GetSocietyWithOffset (GetSocietyWithOffsetIn) returns (GetSocietyWithOffsetOut);
+  // Список сообществ юзера
+  rpc GetSocietyForUserWithOffset (GetSocietyForUserWithOffsetIn) returns (GetSocietyForUserWithOffsetOut);
 }
 
-//Данные для создания сообщества
 message SetSocietyIn {
-  //Имя
+  // Название сообщества
   string name = 1;
-  //Описание
-  string description = 2;
-  //Приватность
-  bool is_private = 3;
-  //Направление
-  int64 direction_id = 4;
-  //Уровень доступа
-  int64 access_level_id = 5;
+  // Формат сообщества
+  int64 formatID = 2;
+  // Правила сообщений в сообществе
+  int64 postPermissionID = 3;
+  // Настройка поиска сообщества
+  bool isSearch = 4;
 }
 
-//Объект ответа создания сообщества
 message SetSocietyOut {
-  //id созданного сообщества
-  int64 society_id = 1;
+  // UUID созданного сообщества
+  string societyUUID = 1;
 }
 
-//Объект возвращения уровней доступа
-message GetAccessLevelOut {
-  // Список уровней доступа
-  repeated AccessLevel levels = 1;
-}
-
-//Описание уровней доступа
-message AccessLevel {
-  //Идентификатор уровня доступа
-  int64 id = 1;
-  // Название или описание уровня доступа
-  string access_level = 2;
-}
-
-//Пустой объект
-message EmptySociety {}
-
-//Объект возвращения списка разрешений
-message GetPermissionsOut {
-  // Список разрешений.
-  repeated Permission permissions = 1;
-}
-
-//Описание разрешения
-message Permission {
-  //Уникальный идентификатор разрешения
-  int64 id = 1;
-  //Название разрешения
+message UpdateSocietyIn {
+  // UUID сообщества
+  string societyUUID = 1;
+  // Название сообщества
   string name = 2;
-  //Описание разрешения
+  // Описание сообщества
   string description = 3;
+  // Аватар сообщества
+  string photoURL = 4;
+  // Формат сообщества
+  int64 formatID = 5;
+  // Правила сообщений в сообществе
+  int64 postPermission = 6;
+  // Настройка поиска сообщества
+  bool isSearch = 7;
+  // Список тегов сообщества
+  repeated TagsID tagsID = 8;
 }
 
-//Данные для подписки на сообщество
-message SubscribeToSocietyIn {
-  //ID сообщества
-  int64 society_id = 1;
+message EmptySociety {
+
+}
+message TagsID {
+  // ID тега
+  int64 tagID = 1;
 }
 
-//Возвращение данных о подписке на сообщество
-message SubscribeToSocietyOut {
-  //Получилось ли подписаться или нет
-  bool success = 1;
+message GetSocietyInfoIn {
+  // UUID сообщества
+  string societyUUID = 1;
 }
 
-//Данные для отписки от сообщества
-message UnsubscribeFromSocietyIn {
-  //ID сообщества
-  int64 society_id = 1;
-}
-
-//Возвращение данных об отписке от сообщества
-message UnsubscribeFromSocietyOut {
-  //Получилось ли подписаться или нет
-  bool success = 1;
-}
-
-//Данные о подписчиках сообщества
-message GetUsersForSocietyIn {
-  //ID сообщества
-  int64 society_id = 1;
-}
-
-//Возвращение данных о подписчиках сообщества
-message GetUsersForSocietyOut {
-  //Список юзеров, подписанных на сообщество
-  repeated UserSociety users = 1;
-}
-
-//Список параметров юзеров, подписанных на сообщество
-message UserSociety {
-  //Имя пользователя
+message GetSocietyInfoOut {
+  // Название сообщества
   string name = 1;
-  //Ссылка на аватарку пользователя
-  string avatar_link = 2;
-  //UUID юзера
-  string user_uuid = 3;
-}
-
-//Данные о подписках юзера
-message GetSocietiesForUserIn {
-  //UUID юзера
-  string user_uuid = 1;
-}
-
-//Возвращение данных о подписках юзера
-message GetSocietiesForUserOut {
-  //Список сообществ, на которые подписан юзер
-  repeated Society society= 1;
-}
-
-//Данные параметров о подписках юзера
-message Society {
-  //Название сообщества
-  string name = 1;
-  //Ссылка на аватарку сообщества
-  string avatar_link = 2;
-  //ID сообщества
-  int64 society_id = 3;
-  //Состоит ли пользователь в группе: true - cocтоит, false - не состоит
-  bool isMember = 4;
-  //Приватное сообщество: true - да, false - нет
-  bool isPrivate = 5;
-
-}
-
-//Данные параметра для получения сообщества
-message GetSocietyInfoIn{
-  //id необходимого сообщества
-  int64 id = 1;
-}
-
-//Данные, возвращаемые о информации сообщества
-message GetSocietyInfoOut{
-  //Наименование сообщества
-  string name = 1;
-  //Описание сообщества
+  // Описание сообщества
   string description = 2;
-  //UUID владельца сообщества
+  // Владелец сообщества
   string ownerUUID = 3;
-  //URL фотографии сообщества
-  string photoUrl = 4;
-  //Приватность сообщества
-  bool isPrivate  = 5;
-  //Кол-во подписчиков сообщества
-  int64 countSubscribers = 6;
+  // Аватар сообщества
+  string photoURL = 4;
+  // Формат сообщества
+  int64 formatID = 5;
+  // Правила сообщений в сообществе
+  int64 postPermission = 6;
+  // Настройка поиска сообщества
+  bool isSearch = 7;
+  // Количество подписчиков сообщества
+  int64 countSubscribe = 8;
+  // Теги сообщества
+  repeated TagsID tagsID = 9;
 }
 
-//Данные, для получения списка сообществ
-message GetSocietyWithOffsetIn{
-  //Количество возвращаемых записей
+message RemoveSocietyIn {
+  // UUID сообщества
+  string societyUUID = 1;
+}
+
+message SubscribeToSocietyIn {
+  // UUID сообщества
+  string societyUUID = 1;
+}
+
+message UnSubscribeToSocietyIn {
+  // UUID сообщества
+  string societyUUID = 1;
+}
+
+message GetSocietyWithOffsetIn {
+  // Лимит возвращаемых записей
   int64 limit = 1;
-  //С какой записи начинаем
-  int64 offset = 2;
-  //Если поле пустое - выводит все группы, иначе поиск по подстроке подходящие
+  // Тотал записи с которой возвращаем
+  int64 total = 2;
+  // Название сообщества по которому происходит поиск, если пусто то все сообщества
   string name = 3;
 }
 
-//Данные, возвращаемые при получении списка сообществ
-message GetSocietyWithOffsetOut{
-  //Список сообществ, на которые подписан юзер
-  repeated Society society = 1;
-  //Общее кол-во возвращенных сообществ
+message GetSocietyWithOffsetOut {
+  // Список сообществ
+  repeated Society societies = 1;
+  // Количество найденых записей
   int64 total = 2;
 }
 
-//Данные, для обновления сообщества
-message UpdateSocietyIn{
-  //Id-society
-  int64 id = 1;
-  //Название сообщества
+message Society {
+  // UUID сообщества
+  string societyUUID = 1;
+  // Название сообщества
   string name = 2;
-  //Описание сообщества
-  string description = 3;
-  //Приватность сообщества
-  bool is_private = 4;
-  //Направление
-  int64 direction_id = 5;
-  //Уровень доступа
-  int64 access_level_id = 6;
+  // Аватар сообщества
+  string photoURL = 3;
+  // Состоит пользователь в сообществе: true - cocтоит, false - не состоит
+  bool isMember = 4;
+  // Приватное сообщество: true - да, false - нет
+  bool isPrivate = 5;
+}
+
+message GetSocietyForUserWithOffsetIn {
+  // Лимит возвращаемых записей
+  int64 limit = 1;
+  // Тотал записи с которой возвращаем
+  int64 total = 2;
+  // UUID пользователя
+  string userUUID = 3;
+}
+
+message GetSocietyForUserWithOffsetOut {
+  // Список сообществ
+  repeated Society societies = 1;
+  // Количество найденых записей
+  int64 total = 2;
 }
