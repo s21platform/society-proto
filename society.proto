@@ -108,7 +108,7 @@ message UnSubscribeToSocietyIn {
 message GetSocietyWithOffsetIn {
   // Лимит возвращаемых записей
   int64 limit = 1;
-  // Тотал записи с которой возвращаем
+  //С какой записи начинаем
   int64 offset = 2;
   // Название сообщества по которому происходит поиск, если пусто то все сообщества
   string name = 3;
@@ -137,8 +137,8 @@ message Society {
 message GetSocietyForUserWithOffsetIn {
   // Лимит возвращаемых записей
   int64 limit = 1;
-  // Тотал записи с которой возвращаем
-  int64 total = 2;
+  //С какой записи начинаем
+  int64 offset = 2;
   // UUID пользователя
   string userUUID = 3;
 }
