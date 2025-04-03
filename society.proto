@@ -88,6 +88,8 @@ message GetSocietyInfoOut {
   int64 countSubscribe = 8;
   // Теги сообщества
   repeated TagsID tagsID = 9;
+  //может редактировать сообщество
+  bool canEditSociety = 10;
 }
 
 message RemoveSocietyIn {

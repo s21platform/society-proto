@@ -108,6 +108,7 @@
 | isSearch | [bool](#bool) |  | Настройка поиска сообщества |
 | countSubscribe | [int64](#int64) |  | Количество подписчиков сообщества |
 | tagsID | [TagsID](#TagsID) | repeated | Теги сообщества |
+| canEditSociety | [bool](#bool) |  | может редактировать сообщество |
 
 
 
