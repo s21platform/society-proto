@@ -102,12 +102,13 @@
 | name | [string](#string) |  | Название сообщества |
 | description | [string](#string) |  | Описание сообщества |
 | ownerUUID | [string](#string) |  | Владелец сообщества |
-| canEditSociety | [bool](#bool) |  | может редактировать сообщество |
+| photoURL | [string](#string) |  | Аватар сообщества |
 | formatID | [int64](#int64) |  | Формат сообщества |
 | postPermission | [int64](#int64) |  | Правила сообщений в сообществе |
 | isSearch | [bool](#bool) |  | Настройка поиска сообщества |
 | countSubscribe | [int64](#int64) |  | Количество подписчиков сообщества |
 | tagsID | [TagsID](#TagsID) | repeated | Теги сообщества |
+| canEditSociety | [bool](#bool) |  | может редактировать сообщество |
 
 
 
@@ -270,7 +271,6 @@
 | societyUUID | [string](#string) |  | UUID сообщества |
 | name | [string](#string) |  | Название сообщества |
 | description | [string](#string) |  | Описание сообщества |
-| photoURL | [string](#string) |  | Аватар сообщества |
 | formatID | [int64](#int64) |  | Формат сообщества |
 | postPermission | [int64](#int64) |  | Правила сообщений в сообществе |
 | isSearch | [bool](#bool) |  | Настройка поиска сообщества |
