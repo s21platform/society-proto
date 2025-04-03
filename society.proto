@@ -44,8 +44,6 @@ message UpdateSocietyIn {
   string name = 2;
   // Описание сообщества
   string description = 3;
-  // Аватар сообщества
-  string photoURL = 4;
   // Формат сообщества
   int64 formatID = 5;
   // Правила сообщений в сообществе
@@ -88,6 +86,8 @@ message GetSocietyInfoOut {
   int64 countSubscribe = 8;
   // Теги сообщества
   repeated TagsID tagsID = 9;
+  //может редактировать сообщество
+  bool canEditSociety = 10;
 }
 
 message RemoveSocietyIn {
