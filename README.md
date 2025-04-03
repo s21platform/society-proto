@@ -102,13 +102,12 @@
 | name | [string](#string) |  | Название сообщества |
 | description | [string](#string) |  | Описание сообщества |
 | ownerUUID | [string](#string) |  | Владелец сообщества |
-| photoURL | [string](#string) |  | Аватар сообщества |
+| canEditSociety | [bool](#bool) |  | может редактировать сообщество |
 | formatID | [int64](#int64) |  | Формат сообщества |
 | postPermission | [int64](#int64) |  | Правила сообщений в сообществе |
 | isSearch | [bool](#bool) |  | Настройка поиска сообщества |
 | countSubscribe | [int64](#int64) |  | Количество подписчиков сообщества |
 | tagsID | [TagsID](#TagsID) | repeated | Теги сообщества |
-| canEditSociety | [bool](#bool) |  | может редактировать сообщество |
 
 
 
