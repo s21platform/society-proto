@@ -208,7 +208,7 @@
 | name | [string](#string) |  | Название сообщества |
 | photoURL | [string](#string) |  | Аватар сообщества |
 | isMember | [bool](#bool) |  | Состоит пользователь в сообществе: true - cocтоит, false - не состоит |
-| isPrivate | [bool](#bool) |  | Приватное сообщество: true - да, false - нет |
+| formatId | [int64](#int64) |  | Формат сообщества: 1 - открытый, 2 - закрытый, 3 - платное |
 
 
 

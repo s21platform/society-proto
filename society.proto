@@ -130,8 +130,8 @@ message Society {
   string photoURL = 3;
   // Состоит пользователь в сообществе: true - cocтоит, false - не состоит
   bool isMember = 4;
-  // Приватное сообщество: true - да, false - нет
-  bool isPrivate = 5;
+  // Формат сообщества: 1 - открытый, 2 - закрытый, 3 - платное
+  int64 formatId = 5;
 }
 
 message GetSocietyForUserWithOffsetIn {
